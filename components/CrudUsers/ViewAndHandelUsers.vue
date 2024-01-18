@@ -1,6 +1,8 @@
 <script setup>
 import { Crudusers } from "../stores/myStore"
 const users = Crudusers();
+console.log("Hello")
+console.log(users.uservalues)
 </script>
 <template>
     <div class="users" v-for="user in users.uservalues">
@@ -43,4 +45,5 @@ const users = Crudusers();
 
 p {
     margin-top: 20px;
-}</style>
+}
+</style>

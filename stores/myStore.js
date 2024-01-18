@@ -66,3 +66,8 @@ export const Crudusers = defineStore('mydata', () => {
   }
   return {  uservalues, userName, userAge, onFormUserSubmit ,onDeleteUser};
 });
+
+export const isSign = defineStore('mydata', () => {
+  const userSigned = ref(false);
+  return { userSigned};
+});

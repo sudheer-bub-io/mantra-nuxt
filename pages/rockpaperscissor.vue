@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 definePageMeta({
-  layout:'custom'
+    layout: 'custom'
 })
 
 const img1 = "https://img.icons8.com/stickers/100/hand-rock-skin-type-1.png";
@@ -45,44 +45,44 @@ function callbackFunction() {
         (userValue.value === 2 && num === 1) ||
         (userValue.value === 3 && num === 2)
     ) {
-        result.value = true; 
+        result.value = true;
     } else {
-        result.value = false; 
+        result.value = false;
     }
-    answer.value=false
+    answer.value = false
 }
 </script>
 
 <template>
-  <div class="m-0">
-    <div>
-    <h1  class="text-2xl text-center font-bold xl:text-4xl">Rock Paper Scissors</h1>
-  </div>  
-    <div class="flex justify-evenly ">
-      <button @click="()=>clickedImage(1)" class="w-5/12 " ><img :src="img1" class="w-5/12  m-auto"></button>
-      <button @click="()=>clickedImage(2)" class="w-5/12 " ><img :src="img2" class="w-5/12   m-auto"></button>
-      <button @click="()=>clickedImage(3)" class="w-5/12" ><img :src="img3" class="w-5/12  m-auto"></button> 
-  </div>
-  <br>
-  <div class="flex justify-center ml-16">
-  <div v-if="result === null">
-    <p class="text-2xl text-center font-bold xl:text-4xl text-orange-400">It's a Tie!</p>
-  </div>
-  <div v-else-if="result" >
-      <h1 class="text-2xl text-center font-bold xl:text-4xl text-green-900">Congratulations You Won </h1>
-  </div>
-  <div v-else >
-    <div v-if="answer">
-      <h1 class="text-2xl text-center font-bold xl:text-4xl text-blue-400">Start the Game</h1>
+    <div class="m-0">
+        <div>
+            <h1 class="text-2xl text-center font-bold xl:text-4xl">Rock Paper Scissors</h1>
+        </div>
+        <div class="flex justify-evenly ">
+            <button @click="() => clickedImage(1)" class="w-5/12 "><img :src="img1" class="w-5/12  m-auto"></button>
+            <button @click="() => clickedImage(2)" class="w-5/12 "><img :src="img2" class="w-5/12   m-auto"></button>
+            <button @click="() => clickedImage(3)" class="w-5/12"><img :src="img3" class="w-5/12  m-auto"></button>
+        </div>
+        <br>
+        <div class="flex justify-center ml-16">
+            <div v-if="result === null">
+                <p class="text-2xl text-center font-bold xl:text-4xl text-orange-400">It's a Tie!</p>
+            </div>
+            <div v-else-if="result">
+                <h1 class="text-2xl text-center font-bold xl:text-4xl text-green-900">Congratulations You Won </h1>
+            </div>
+            <div v-else>
+                <div v-if="answer">
+                    <h1 class="text-2xl text-center font-bold xl:text-4xl text-blue-400">Start the Game</h1>
+                </div>
+                <div v-else>
+                    <h1 class="text-2xl text-center font-bold xl:text-4xl text-red-400">Oops! Computer Wins!</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="flex justify-center">
+            <button class="w-5/12"><img :src="number" class="w-5/12 m-auto"></button>
+        </div>
     </div>
-    <div v-else>
-      <h1 class="text-2xl text-center font-bold xl:text-4xl text-red-400">Oops! Computer Wins!</h1>
-    </div>
-  </div>
-</div>
-    <br>  
-  <div class="flex justify-center">
-        <button class="w-5/12" ><img :src="number" class="w-5/12 m-auto"></button>
-    </div>
-</div>
 </template>

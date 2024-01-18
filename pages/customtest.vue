@@ -1,8 +1,6 @@
-<template>
-    <h1>Custom Layout Test</h1>
-</template>
+<template></template>
 <script setup>
 definePageMeta({
-    layout:'custom'
+    layout: 'custom'
 })
 </script>

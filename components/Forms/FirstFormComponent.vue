@@ -30,7 +30,7 @@ console.log("hello From form")
 
         <div class=" bg-white max-w-md rounded overflow-hidden shadow-xl p-5">
           <form class="space-y-4" action="#" @submit.prevent="sendData">
-            <input type="hidden" name="remember" value="True">  
+            <input type="hidden" name="remember" value="True">
             <div v-for="name in name" class="rounded-md shadow-sm -space-y-px">
               <div class="grid gap-6">
                 <div class="col-span-12">
