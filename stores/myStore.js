@@ -32,24 +32,25 @@ export const usersdata = defineStore('userdata', () => {
   };
 });
 
-export const Crudusers = defineStore('mydata', () => {
-  const uservalues = ref([
-    {
-      id: generateRandomNumber(),
-      name: 'sudheer',
-      age: 22,
-    },
-    {
-      id: generateRandomNumber(),
-      name: 'lokesh',
-      age: 24,
-    },
-  ]);
+export const crudusers = defineStore('mydata', () => {
+  const uservalues = ref([]);
   const userName = ref('');
   const userAge = ref('');
 
-  console.log('userName Empty ' + userName.value);
-  console.log('userAge Empty ' + userAge.value);
+  function fetchInitialData() {
+    uservalues.value = [
+      {
+        id: generateRandomNumber(),
+        name: 'sudheer',
+        age: 22,
+      },
+      {
+        id: generateRandomNumber(),
+        name: 'lokesh',
+        age: 24,
+      },
+    ];
+  }
 
   function onFormUserSubmit() {
     const userValue = {
@@ -61,13 +62,21 @@ export const Crudusers = defineStore('mydata', () => {
     userName.value = '';
     userAge.value = '';
   }
-  function onDeleteUser(id){
+
+  function onDeleteUser(id) {
     uservalues.value = uservalues.value.filter((user) => user.id !== +id);
   }
-  return {  uservalues, userName, userAge, onFormUserSubmit ,onDeleteUser};
+
+  return { uservalues, userName, userAge, onFormUserSubmit, onDeleteUser, fetchInitialData };
 });
 
 export const isSign = defineStore('mydata', () => {
   const userSigned = ref(false);
   return { userSigned};
+});
+
+export const enteredColor = defineStore('mydata', () => {
+  const userColor = ref(true);
+  console.log(userColor)
+  return{userColor}
 });

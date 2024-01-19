@@ -1,10 +1,3 @@
 <template>
-    <h1>Hello From Home</h1>
+    <h1 class="ml-5">logInIn To Enter</h1>
 </template>
-<script setup>
-definePageMeta({
-    middleware: "auth"
-})
-const isLogin = true;
-
-</script>

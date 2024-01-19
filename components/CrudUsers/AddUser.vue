@@ -1,7 +1,7 @@
 <script setup>
-import { Crudusers } from "../stores/myStore";
+import { crudusers } from "../stores/myStore";
 
-const addUserStore = Crudusers();
+const addUserStore = crudusers();
 </script>
 
 <template>

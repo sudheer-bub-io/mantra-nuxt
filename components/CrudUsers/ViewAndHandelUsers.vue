@@ -1,16 +1,35 @@
-<script setup>
-import { Crudusers } from "../stores/myStore"
-const users = Crudusers();
-console.log("Hello")
-console.log(users.uservalues)
-</script>
 <template>
-    <div class="users" v-for="user in users.uservalues">
-        <p class="text-xl pt-5 pl-5"><span class="formSpan">userName : </span>{{ user.name }}</p>
-        <p class="text-xl pl-5"> <span class="formSpan">age :</span> {{ user.age }}</p>
-        <button @click="() => users.onDeleteUser(user.id)" class="deleteButton">delete</button>
+    <div >
+      <div v-if="users.uservalues && users.uservalues.length > 0" class="flex">
+        <div class="users" v-for="user in users.uservalues" :key="user.id">
+          <p class="text-xl pt-5 pl-5"><span class="formSpan">userName : </span>{{ user.name }}</p>
+          <p class="text-xl pl-5"><span class="formSpan">age :</span> {{ user.age }}</p>
+          <button @click="() => users.onDeleteUser(user.id)" class="deleteButton">delete</button>
+        </div>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
+      </div>
     </div>
-</template>
+  </template>
+  
+  <script setup>
+  import { crudusers } from "@/stores/myStore";
+  import { onMounted } from "vue";
+  
+  const users = crudusers();
+  
+  onMounted(async () => {
+    console.log("Hello from component users");
+    await users.fetchInitialData(); 
+    console.log(users.uservalues);
+  });
+  
+  console.log("Hello from component uses");
+  console.log(users.uservalues);
+  </script>
+  
+  
 <style>
 .users {
     width: 250px;

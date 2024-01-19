@@ -1,9 +1,13 @@
 <script setup>
+
 import { ref, onMounted, computed } from 'vue';
 definePageMeta({
   layout: 'custom'
 })
-
+import { accessFormsData } from "@/stores/allData";
+const formsData = accessFormsData();
+const college = "college Form";
+const student = "student Form";
 const coll = ref(false);
 const stud = ref(true);
 const showEnterdedData = ref(false);
@@ -44,10 +48,10 @@ onMounted(() => {
       <button @click="() => toggleState('showData')" class="day2">User data </button>
     </div>
     <div v-if="coll">
-      <FormsCollegeForm />
+      <FormsFirstFormComponent :name="formsData.collegeData" :formtype="college"/>
     </div>
     <div v-if="stud">
-      <FormsStudentForm />
+     <FormsFirstFormComponent :name="formsData.studentData" :formtype="student"/>
     </div>
     <div v-if="showEnterdedData">
       <table class="styled-table">

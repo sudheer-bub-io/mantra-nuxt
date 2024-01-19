@@ -63,7 +63,7 @@ const login = () => {
         console.log('Login successful!');
         signInValue.userSigned =true
         console.log(signInValue.userSigned)
-        router.push("/customtest")
+        router.push("/all-users")
     } else {
         console.log('Invalid username or password.');
     }

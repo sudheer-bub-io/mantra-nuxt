@@ -2,9 +2,10 @@
 import { ref } from 'vue';
 
 definePageMeta({
-    layout: 'custom'
+    layout: 'custom',
+    middleware:['auth']
 })
-
+const {$randomNumber} = useNuxtApp();
 const img1 = "https://img.icons8.com/stickers/100/hand-rock-skin-type-1.png";
 const img2 = "https://img.icons8.com/fluency/48/paper-hand.png";
 const img3 = "https://img.icons8.com/emoji/48/victory-hand-emoji.png";
@@ -19,7 +20,7 @@ function clickedImage(value) {
 }
 
 function callbackFunction() {
-    const num = Math.floor(Math.random() * 3) + 1;
+    const num = $randomNumber(3)
 
     switch (num) {
         case 1:

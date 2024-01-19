@@ -8,11 +8,11 @@
         </div>
         <div class="bg-slate-700 w-26 h-full fixed">
             <nav class="flex flex-col p-5">
-                <NuxtLink to="/allusers" class="mb-5 text-lg text-white">Users</NuxtLink>
-                <NuxtLink to="/main" class="mb-5 text-lg text-white">Forms</NuxtLink>
-                <NuxtLink to="/rockpaperscissor" class="mb-5 text-lg text-white">RPS Game</NuxtLink>
-                <NuxtLink to="/crudusers" class="mb-5 text-lg text-white">CRUD Users</NuxtLink>
-                <NuxtLink to="/customtest" class="mb-5 text-lg text-white">test</NuxtLink>
+                <NuxtLink to="/all-users" class="mb-5 text-lg text-white">Users</NuxtLink>
+                <NuxtLink to="/forms" class="mb-5 text-lg text-white">Forms</NuxtLink>
+                <NuxtLink to="/rock-paper-scissor" class="mb-5 text-lg text-white">RPS Game</NuxtLink>
+                <NuxtLink to="/crud-users" class="mb-5 text-lg text-white">CRUD Users</NuxtLink>
+                <NuxtLink to="/custom-test" class="mb-5 text-lg text-white">test</NuxtLink>
                 <NuxtLink to="/" class="mb-5 text-lg text-white">Log Out</NuxtLink>
             </nav>
         </div>

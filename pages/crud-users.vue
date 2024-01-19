@@ -1,16 +1,17 @@
 <script setup>
-import { Crudusers } from "../stores/myStore"
+import { crudusers } from "../stores/myStore"
 definePageMeta({
     layout: 'custom'
 })
-const users = Crudusers();
-console.log(users)
+const users = crudusers();
+console.log("Hi from pages crud")
+console.log(users.uservalues);
 </script>
 <template>
     <div class="flex justify-center">
         <CrudUsersAddUser />
     </div>
-    <div class="flex ">
+    <div>
         <CrudUsersViewAndHandelUsers />
     </div>
 </template>

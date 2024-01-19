@@ -16,7 +16,6 @@ const sendData = () => {
   localStorage.setItem("mydata", JSON.stringify(storedData));
   location.reload();
 };
-console.log("hello From form")
 </script>
 <template>
   <div :id="formtype">

@@ -16,8 +16,11 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@nuxtjs/toast": "^3.3.1",
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.5",
-    "pinia": "^2.1.7"
+    "nuxt-tailvue": "^1.0.95",
+    "pinia": "^2.1.7",
+    "vue-toastification": "^2.0.0-rc.5"
   }
 }

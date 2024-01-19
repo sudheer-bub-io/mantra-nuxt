@@ -9,8 +9,6 @@
               Register To Login
             </h1>
             <div class="space-y-4 md:space-y-6">
-
-
               <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
                 <input type="text" v-model="username" name="text" id="email"
