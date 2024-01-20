@@ -4,8 +4,6 @@ definePageMeta({
     layout: 'custom'
 })
 const users = crudusers();
-console.log("Hi from pages crud")
-console.log(users.uservalues);
 </script>
 <template>
     <div class="flex justify-center">

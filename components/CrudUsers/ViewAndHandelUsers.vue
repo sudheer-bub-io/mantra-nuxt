@@ -20,13 +20,8 @@
   const users = crudusers();
   
   onMounted(async () => {
-    console.log("Hello from component users");
     await users.fetchInitialData(); 
-    console.log(users.uservalues);
   });
-  
-  console.log("Hello from component uses");
-  console.log(users.uservalues);
   </script>
   
   

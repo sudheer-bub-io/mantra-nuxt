@@ -7,8 +7,6 @@ definePageMeta({
 })
 const usestore = userDataStore();
 const userdata = usersdata();
-console.log(userdata.users)
-console.log(usestore.data)
 onMounted(async () => {
   await userdata.fetchUsers();
 });

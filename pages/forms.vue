@@ -36,7 +36,6 @@ const filteredData = computed(() => {
 
 onMounted(() => {
   studentData.value = filteredData.value;
-  console.log(studentData.value);
 });
 </script>
 

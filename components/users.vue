@@ -4,8 +4,6 @@ import { useRouter } from 'vue-router';
 
 const { userData } = defineProps(['userData']);
 const router = useRouter();
-console.log(userData);
-console.log("Hi");
 </script>
 
 <template>

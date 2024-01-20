@@ -1,6 +1,5 @@
 <script setup>
 import { crudusers } from "../stores/myStore";
-
 const addUserStore = crudusers();
 </script>
 

@@ -10,7 +10,6 @@ const randomNumber = randomNumber1or2();
 const myArray = colorArray[randomNumber]
 
 function userClicked(value) {
-    console.log(colorArray[randomNumber1or2()])
     if (value == myArray) {
         navigateTo("/rock-paper-scissor")
         checkColor.userColor=false;

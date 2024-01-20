@@ -59,42 +59,76 @@ export const accessFormsData = defineStore('alldata', () => {
             placeholder: "Enter Something"
         },
     ]
-    const loginData = [
-        {
-            id: 1,
-            type: "text",
-            name: "User Name",
-            placeholder: "User Name"
-        },
-        {
-            id: 2,
-            type: "password",
-            name: "password",
-            placeholder: "••••••••"
-        },
-    ]
-    const registerData = [
-        {
-            id: 1,
-            type: "text",
-            name: "User Name",
-            placeholder: "User Name",
-            value:"userName"
-        },
-        {
-            id: 2,
-            type: "Email",
-            name: "Email",
-            placeholder: "Email",
-            value:"Email"
-        },
-        {
-            id: 3,
-            type: "password",
-            name: "password",
-            placeholder: "••••••••",
-            value:"Password"
-        }
-    ]
-    return { collegeData ,studentData,loginData,registerData};
+    return { collegeData ,studentData,};
   });
+
+export const AccessFormData = defineStore('accessFormData', () => {
+  const loginData = [
+    {
+      id: 1,
+      type: 'text',
+      name: 'username',
+      placeholder: 'Username',
+      value: ''
+    },
+    {
+      id: 2,
+      type: 'password',
+      name: 'password',
+      placeholder: 'Password',
+      value: ''
+    },
+  ];
+
+  const registerData = [
+    {
+      id: 1,
+      type: 'text',
+      name: 'username',
+      placeholder: 'Username',
+      value: ''
+    },
+    {
+      id: 2,
+      type: 'email',
+      name: 'email',
+      placeholder: 'Email',
+      value: ''
+    },
+    {
+      id: 3,
+      type: 'password',
+      name: 'password',
+      placeholder: 'Password',
+      value: ''
+    },
+  ];
+
+  const userData = {
+    loggedInUser: null,
+    registeredUsers: [],
+
+    initialize: () => {
+      if (typeof localStorage !== 'undefined') {
+        userData.registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+      }
+    },
+
+    storeUser: (user) => {
+      userData.registeredUsers.push(user);
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('registeredUsers', JSON.stringify(userData.registeredUsers));
+      }
+    },
+
+    checkLogin: (username, password) => {
+      return userData.registeredUsers.find(user => user.username === username && user.password === password);
+    },
+  };
+
+  userData.initialize();
+
+  return { loginData, registerData, userData };
+});
+
+  
