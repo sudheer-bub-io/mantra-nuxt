@@ -6,8 +6,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import { AccessFormData } from '../stores/allData';
-
+import { AccessFormData } from '../stores/formsData';
+ import { useToast } from 'vue-toastification';
+  import 'vue-toastification/dist/index.css';
+  const toast = useToast();
 const store = AccessFormData();
 const registerdata = ref(store.registerData);
 const Register = "Register"
@@ -26,7 +28,10 @@ const handleFormSubmit = (formData) => {
     email: formData.email,
     password: formData.password,
   });
-
+  toast.success(`you're successfully registered`);
   console.log('User registered successfully');
+  setTimeout(()=>{
+    navigateTo('/userAuthentication/login')
+  },2500)
 };
 </script>

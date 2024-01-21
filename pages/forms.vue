@@ -4,7 +4,7 @@ import { ref, onMounted, computed } from 'vue';
 definePageMeta({
   layout: 'custom'
 })
-import { accessFormsData } from "@/stores/allData";
+import { accessFormsData } from "@/stores/formsData";
 const formsData = accessFormsData();
 const college = "college Form";
 const student = "student Form";

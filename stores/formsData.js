@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const accessFormsData = defineStore('alldata', () => {
+export const accessFormsData = defineStore('formsdata', () => {
     const collegeData = [
         {
             id: 1,

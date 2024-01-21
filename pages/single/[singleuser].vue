@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+definePageMeta({
+  layout: 'custom'
+})
 const { singleuser } = useRoute().params;
 const userData = ref({});
 async function fetchData() {

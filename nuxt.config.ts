@@ -1,6 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt',]
-
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
 });

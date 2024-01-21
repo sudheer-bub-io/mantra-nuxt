@@ -1,11 +1,9 @@
 <!-- pages/index.vue -->
 <script setup>
-import { userDataStore } from "../stores/myStore";
 import { usersdata } from "../stores/myStore";
 definePageMeta({
   layout: 'custom'
 })
-const usestore = userDataStore();
 const userdata = usersdata();
 onMounted(async () => {
   await userdata.fetchUsers();

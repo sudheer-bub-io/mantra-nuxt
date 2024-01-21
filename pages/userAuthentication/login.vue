@@ -6,8 +6,12 @@
   
   <script setup>
   import { ref } from 'vue';
-  import { AccessFormData} from '../stores/allData';
+  import { AccessFormData} from '../stores/formsData';
+  import { useToast } from 'vue-toastification';
+  import 'vue-toastification/dist/index.css';
+
   
+  const toast = useToast();
   const store = AccessFormData();
   const logindata = ref(store.loginData);
   const Login= "Login"
@@ -21,15 +25,17 @@
   };
   
   const handleFormSubmit = (formData) => {
-    const loggedInUser = store.userData.checkLogin(formData.username, formData.password);
-  
-    if (loggedInUser) {
-      store.userData.loggedInUser = loggedInUser;
-      console.log('Login successful');
-      navigateTo('/all-users');
-    } else {
-      console.log('Invalid credentials');
-    }
-  };
+  const loggedInUser = store.userData.checkLogin(formData.username, formData.password);
+
+  if (loggedInUser) {
+    store.userData.loggedInUser = loggedInUser;
+    console.log('Login successful');
+    toast.success('Success!');
+    navigateTo('/all-users');
+  } else {
+    console.log('Invalid credentials');
+    toast.error('Credentials are Wrong');
+  }
+};
   </script>
   

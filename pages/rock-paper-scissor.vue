@@ -5,6 +5,7 @@ definePageMeta({
     layout: 'custom',
     middleware:['auth']
 })
+
 const {$randomNumber} = useNuxtApp();
 const img1 = "https://img.icons8.com/stickers/100/hand-rock-skin-type-1.png";
 const img2 = "https://img.icons8.com/fluency/48/paper-hand.png";
@@ -20,18 +21,20 @@ function clickedImage(value) {
 }
 
 function callbackFunction() {
-    const num = $randomNumber(3)
+    const rpsArray = ['rock', 'paper', 'scissor'];
+    const num = $randomNumber(3);
+    const type = rpsArray[num-1];
 
-    switch (num) {
-        case 1:
+    switch (type) {
+        case 'rock':
             number = img1;
             break;
 
-        case 2:
+        case 'paper':
             number = img2;
             break;
 
-        case 3:
+        case 'scissor':
             number = img3;
             break;
 
@@ -39,18 +42,18 @@ function callbackFunction() {
             console.log("Something went wrong");
     }
 
-    if (userValue.value === num) {
-        result.value = null;
+    if (userValue.value == type) {
+        result.value = null; 
     } else if (
-        (userValue.value === 1 && num === 3) ||
-        (userValue.value === 2 && num === 1) ||
-        (userValue.value === 3 && num === 2)
+        (userValue.value == 'rock' && type === 'scissor') ||
+        (userValue.value == 'paper' && type === 'rock') ||
+        (userValue.value == 'scissor' && type === 'paper')
     ) {
-        result.value = true;
+        result.value = true; 
     } else {
-        result.value = false;
+        result.value = false; 
     }
-    answer.value = false
+    answer.value = false;
 }
 </script>
 
@@ -60,9 +63,9 @@ function callbackFunction() {
             <h1 class="text-2xl text-center font-bold xl:text-4xl">Rock Paper Scissors</h1>
         </div>
         <div class="flex justify-evenly ">
-            <button @click="() => clickedImage(1)" class="w-5/12 "><img :src="img1" class="w-5/12  m-auto"></button>
-            <button @click="() => clickedImage(2)" class="w-5/12 "><img :src="img2" class="w-5/12   m-auto"></button>
-            <button @click="() => clickedImage(3)" class="w-5/12"><img :src="img3" class="w-5/12  m-auto"></button>
+            <button @click="() => clickedImage('rock')" class="w-5/12 "><img :src="img1" class="w-5/12  m-auto"></button>
+            <button @click="() => clickedImage('paper')" class="w-5/12 "><img :src="img2" class="w-5/12   m-auto"></button>
+            <button @click="() => clickedImage('scissor')" class="w-5/12"><img :src="img3" class="w-5/12  m-auto"></button>
         </div>
         <br>
         <div class="flex justify-center ml-16">
@@ -70,14 +73,14 @@ function callbackFunction() {
                 <p class="text-2xl text-center font-bold xl:text-4xl text-orange-400">It's a Tie!</p>
             </div>
             <div v-else-if="result">
-                <h1 class="text-2xl text-center font-bold xl:text-4xl text-green-900">Congratulations You Won </h1>
+                <h1 class="text-2xl text-center font-bold xl:text-4xl text-green-400">Congratulations You Won </h1>
             </div>
             <div v-else>
                 <div v-if="answer">
                     <h1 class="text-2xl text-center font-bold xl:text-4xl text-blue-400">Start the Game</h1>
                 </div>
                 <div v-else>
-                    <h1 class="text-2xl text-center font-bold xl:text-4xl text-red-400">Oops! Computer Wins!</h1>
+                    <h1 class="text-2xl text-center font-bold xl:text-4xl text-red-700">Oops! Computer Wins!</h1>
                 </div>
             </div>
         </div>

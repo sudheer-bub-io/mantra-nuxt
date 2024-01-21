@@ -32,25 +32,21 @@ export const usersdata = defineStore('userdata', () => {
   };
 });
 
-export const crudusers = defineStore('mydata', () => {
-  const uservalues = ref([]);
+export const crudusers = defineStore('mydata2', () => {
+  const uservalues = ref([
+    {
+      id: generateRandomNumber(),
+      name: 'sudheer',
+      age: 22,
+    },
+    {
+      id: generateRandomNumber(),
+      name: 'lokesh',
+      age: 24,
+    },
+  ]);
   const userName = ref('');
   const userAge = ref('');
-
-  function fetchInitialData() {
-    uservalues.value = [
-      {
-        id: generateRandomNumber(),
-        name: 'sudheer',
-        age: 22,
-      },
-      {
-        id: generateRandomNumber(),
-        name: 'lokesh',
-        age: 24,
-      },
-    ];
-  }
 
   function onFormUserSubmit() {
     const userValue = {
@@ -67,8 +63,12 @@ export const crudusers = defineStore('mydata', () => {
     uservalues.value = uservalues.value.filter((user) => user.id !== +id);
   }
 
-  return { uservalues, userName, userAge, onFormUserSubmit, onDeleteUser, fetchInitialData };
+  return { uservalues, userName, userAge, onFormUserSubmit, onDeleteUser };
 });
+
+
+
+
 
 export const isSign = defineStore('mydata', () => {
   const userSigned = ref(false);
