@@ -13,7 +13,6 @@ function userClicked(value) {
     if (value == myArray) {
         navigateTo("/rock-paper-scissor")
         checkColor.userColor=false;
-        console.log("Same");
     } else {
         console.log("Not Same");
     }

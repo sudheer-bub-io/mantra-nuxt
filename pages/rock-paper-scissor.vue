@@ -60,7 +60,7 @@ function callbackFunction() {
 <template>
     <div class="m-0">
         <div>
-            <h1 class="text-2xl text-center font-bold xl:text-4xl">Rock Paper Scissors</h1>
+            <h1 class="text-2xl text-center font-bold xl:text-4xl mt-16">Rock Paper Scissors</h1>
         </div>
         <div class="flex justify-evenly ">
             <button @click="() => clickedImage('rock')" class="w-5/12 "><img :src="img1" class="w-5/12  m-auto"></button>

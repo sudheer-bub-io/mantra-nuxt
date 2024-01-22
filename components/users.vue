@@ -30,4 +30,5 @@ const router = useRouter();
         <a class="px-2 text-sm text-right" @click="router.push(`single/${userData.id}`)"> view More details</a>
       </div>
   </div>
-</div></template>
+</div>
+</template>

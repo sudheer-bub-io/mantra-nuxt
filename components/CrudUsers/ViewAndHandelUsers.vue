@@ -13,7 +13,6 @@
 <script setup>
 import { crudusers } from "@/stores/myStore";
 const users = crudusers();
-console.log(users.uservalues);
 </script>
 
 <style>

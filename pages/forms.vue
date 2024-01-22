@@ -80,6 +80,8 @@ onMounted(() => {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .day2 {
@@ -95,7 +97,8 @@ onMounted(() => {
 }
 
 .styled-table {
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   border-collapse: collapse;
   margin-top: 50px;
 }

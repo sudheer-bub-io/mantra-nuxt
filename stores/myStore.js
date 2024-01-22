@@ -1,12 +1,14 @@
 
 import { defineStore } from "pinia";
+import { useToast } from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
+
+const toast = useToast();
 
 function generateRandomNumber() {
   return Math.floor(Math.random() * 100);
 }
 export const userDataStore = defineStore('mydata', () => {
-  const data = ref("sudheer from store");
-  console.log("Hi Maom")
   return { data };
 });
 
@@ -45,38 +47,45 @@ export const crudusers = defineStore('mydata2', () => {
       age: 24,
     },
   ]);
+
   const userName = ref('');
   const userAge = ref('');
-
   function onFormUserSubmit() {
+    const { $checkInputFeild } = useNuxtApp();
     const userValue = {
       id: generateRandomNumber(),
       name: userName.value,
       age: userAge.value,
     };
-    uservalues.value.push(userValue);
-    userName.value = '';
-    userAge.value = '';
-  }
+    const isValid = $checkInputFeild(userValue);
 
+    if (!isValid) {
+      toast.error('Enter All The Fields');
+    } else {
+      const ageRegex = /^(?:[1-9]|[1-9][0-9]|120)$/
+      if (!ageRegex.test(userAge.value)) {
+        toast.error('Enter Valid Age');
+      } else {
+        uservalues.value.push(userValue);
+        toast.success('User Added Successfully');
+        userName.value = '';
+        userAge.value = '';
+      }
+    }
+
+  }
   function onDeleteUser(id) {
     uservalues.value = uservalues.value.filter((user) => user.id !== +id);
   }
 
   return { uservalues, userName, userAge, onFormUserSubmit, onDeleteUser };
 });
-
-
-
-
-
 export const isSign = defineStore('mydata', () => {
   const userSigned = ref(false);
-  return { userSigned};
+  return { userSigned };
 });
 
 export const enteredColor = defineStore('mydata', () => {
   const userColor = ref(true);
-  console.log(userColor)
-  return{userColor}
+  return { userColor }
 });

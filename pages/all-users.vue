@@ -1,4 +1,3 @@
-<!-- pages/index.vue -->
 <script setup>
 import { usersdata } from "../stores/myStore";
 definePageMeta({
