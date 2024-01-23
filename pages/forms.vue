@@ -1,20 +1,20 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { accessFormsData } from "@/stores/formsData";
+import { AccessFormData } from "@/stores/formsData";
 import { useToast } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 
 definePageMeta({
   layout: 'custom'
-})
+});
 
 const toast = useToast();
 const { $checkInputFeild } = useNuxtApp();
-const formsData = accessFormsData();
+const formsData = AccessFormData();
 const studentDataForm = ref(formsData.studentData);
 const collegeDataForm = ref(formsData.collegeData);
-const college = "college Form";
-const student = "student Form";
+const college = "collegeForm";
+const student = "studentForm";
 const coll = ref(false);
 const stud = ref(true);
 const showEnterdedData = ref(false);
@@ -60,8 +60,8 @@ const handleFormSubmit = (formD, message) => {
   userSubmitedForm.value=message;
   const isValid = $checkInputFeild(formD);
   if (isValid) {
-    if (message == 'student Form') {
-      formsData.usersInfo.storeUser({
+    if (message == 'studentForm') {
+      formsData.userData.storeUser({
         studentId: formD.studentid,
         name: formD.name,
         email: formD.email,
@@ -69,10 +69,9 @@ const handleFormSubmit = (formD, message) => {
         password: formD.entersomething,
       }, "StudentData");
       toast.success(`You're successfully registered`);
-    } else if (message == 'college Form') {
-      console.log("hello User")
-      console.log(formD)
-      formsData.usersInfo.storeUser({
+    } 
+    else if (message == 'collegeForm') {
+      formsData.userData.storeUser({
         referenceId: formD.referenceid,
         name: formD.name,
         email: formD.email,
@@ -80,13 +79,10 @@ const handleFormSubmit = (formD, message) => {
       }, "CollegeData");
       toast.success(`You're successfully registered`);
     }
-
   }
 }
 
-onMounted(() => {
-
-});
+onMounted(() => {});
 
 const filteredData = computed(() => {
   return storedData.value.filter(item => (item['reference Id'] || '').trim() !== '');
@@ -94,7 +90,7 @@ const filteredData = computed(() => {
 
 onMounted(() => {
   studentData.value = filteredData.value;
-})
+});
 </script>
 
 <template>
@@ -118,10 +114,9 @@ onMounted(() => {
         </form>
       </div>
       <div v-if="showEnterdedData">
+        
         <Tablecomponent :storedData="storedData" />
       </div>
     </div>
   </div>
-  
 </template>
-

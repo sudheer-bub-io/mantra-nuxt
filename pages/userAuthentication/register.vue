@@ -28,7 +28,6 @@ const updateFieldValue = (fieldName, value) => {
 };
 
 const handleFormSubmit = (formData) => {
-  console.log(formData)
   const isValid = $checkInputFeild(formData);
   if (isValid) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -44,7 +43,7 @@ const handleFormSubmit = (formData) => {
         username: formData.username,
         email: formData.email,
         password: formData.password,
-      });
+      },"registeredUsers");
 
       toast.success(`You're successfully registered`);
       navigateTo('/userAuthentication/login');
