@@ -28,6 +28,7 @@ const updateFieldValue = (fieldName, value) => {
 };
 
 const handleFormSubmit = (formData) => {
+  console.log(formData)
   const isValid = $checkInputFeild(formData);
   if (isValid) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

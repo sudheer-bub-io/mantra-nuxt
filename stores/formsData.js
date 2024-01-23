@@ -5,62 +5,88 @@ export const accessFormsData = defineStore('formsdata', () => {
     {
       id: 1,
       type: "text",
-      name: "reference Id",
-      placeholder: "refernnce Id"
+      name: "referenceid",
+      placeholder: "refernnce Id",
+      value: ''
     },
     {
       id: 2,
       type: "text",
-      name: "Name",
-      placeholder: "user Name"
+      name: "name",
+      placeholder: "user Name",
+      value: ''
     },
     {
       id: 3,
       type: "text",
-      name: "Email",
-      placeholder: "Enter Your Email"
+      name: "email",
+      placeholder: "Enter Your Email",
+      value: ''
     },
     {
       id: 4,
       type: "text",
-      name: "student Id",
-      placeholder: "Student Id"
+      name: "studentid",
+      placeholder: "Student Id",
+      value: ''
     },
   ]
   const studentData = [
     {
       id: 1,
       type: "text",
-      name: "student Id",
-      placeholder: "Student Id"
+      name: "studentid",
+      placeholder: "Studentid",
+      value: ''
     },
     {
       id: 2,
       type: "text",
-      name: "Name",
-      placeholder: "user Name"
+      name: "name",
+      placeholder: "userName",
+      value: ''
     },
     {
       id: 3,
       type: "text",
-      name: "Email",
-      placeholder: "Enter Your Email"
+      name: "email",
+      placeholder: "EnterEmail",
+      value: ''
     },
     {
       id: 4,
       type: "textArea",
-      name: "Enter Query",
-      placeholder: "Enter Query"
+      name: "enterquery",
+      placeholder: "Enter Query",
+      value: ''
     },
     {
       id: 5,
       type: "text",
-      name: "Enter Something",
-      placeholder: "Enter Something"
+      name: "entersomething",
+      placeholder: "EnterSomething",
+      value: ''
     },
   ]
-  return { collegeData, studentData, };
-});
+  const usersInfo = {
+    storedUsersInfo: [],
+    initialize: () => {
+      if (typeof localStorage !== 'undefined') {
+        usersInfo.storedUsersInfo = JSON.parse(localStorage.getItem('CollegeData')) || [];
+      }
+    },
+    storeUser: (user, setItem) => {
+      usersInfo.storedUsersInfo.push(user);
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(setItem, JSON.stringify(usersInfo.storedUsersInfo));
+      }
+    },
+  };
+
+  usersInfo.initialize();
+
+  return { collegeData, studentData, usersInfo};
+}); 
 
 export const AccessFormData = defineStore('accessFormData', () => {
   const loginData = [
@@ -130,4 +156,55 @@ export const AccessFormData = defineStore('accessFormData', () => {
 
   return { loginData, registerData, userData };
 });
+
+export const NavData = defineStore('navData', () => {
+
+  const defaultNav = [
+    {
+      id: 1,
+      toAddress: '/userAuthentication/register',
+      navName: "Register"
+    },
+    {
+      id: 2,
+      toAddress: '/userAuthentication/login',
+      navName: "Login"
+    },
+  
+  ]
+
+  const customNav = [
+    {
+      id: 1,
+      toAddress: '/all-users',
+      navName: "all-users"
+    },
+    {
+      id: 2,
+      toAddress: '/forms',
+      navName: "forms"
+    },
+    {
+      id: 3,
+      toAddress: '/rock-paper-scissor',
+      navName: "rps Game"
+    },
+    {
+      id: 4,
+      toAddress: '/crud-users',
+      navName: "crud users"
+    },
+    {
+      id: 3,
+      toAddress: '/quote',
+      navName: "Quote"
+    },
+    {
+      id: 5,
+      toAddress: '/userAuthentication/login',
+      navName: "LogOut"
+    },
+  ]
+  return {defaultNav,customNav}
+})
 
