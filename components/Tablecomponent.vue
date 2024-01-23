@@ -15,7 +15,7 @@ console.log(userData.storedData)
         </thead>
         <tbody>
           <tr v-for="(item, index) in userData.storedData" :key="index">
-            <td>{{ item.referenceId }}</td>
+            <td>{{ item.query }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.studentId }}</td>

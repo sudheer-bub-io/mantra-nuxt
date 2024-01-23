@@ -53,10 +53,10 @@ export const AccessFormData = defineStore('accessFormData', () => {
           console.error(`Invalid formType: ${formType}`);
         }
       },
-    
-    checkLogin: (username, password) => {
-      return userData.registeredUsers.find(user => user.username === username && user.password === password);
-    },
+      checkLogin: (username, password) => {
+        return userData.data['registeredUsers'].find(user => user.username === username && user.password === password);
+      },
+        
   };
 
   userData.initialize();
@@ -91,4 +91,3 @@ export const NavData = defineStore('navData', () => {
   ]
   return {defaultNav,customNav}
 })
-

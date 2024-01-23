@@ -6,23 +6,24 @@
 </template>
   
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { AccessFormData } from '../stores/formsData';
 import { useToast } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 
-
 const toast = useToast();
 const store = AccessFormData();
 const logindata = ref(store.loginData);
-const Login = "Login"
-const message = "Login to Your Account "
+const Login = "Login";
+const message = "Login to Your Account ";
 const { $checkInputFeild } = useNuxtApp();
 
 const updateFieldValue = (fieldName, value) => {
-  const field = logindata.value.find(f => f.name === fieldName);
-  if (field) {
-    field.value = value;
+  if (logindata.value) {
+    const field = logindata.value.find(f => f.name === fieldName);
+    if (field) {
+      field.value = value;
+    }
   }
 };
 
@@ -40,7 +41,5 @@ const handleFormSubmit = (formData) => {
       toast.error('InValid Login Credentials');
     }
   }
-
 };
 </script>
-  
