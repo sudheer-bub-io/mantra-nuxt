@@ -36,16 +36,8 @@ export const usersdata = defineStore('userdata', () => {
 
 export const crudusers = defineStore('mydata2', () => {
   const uservalues = ref([
-    {
-      id: generateRandomNumber(),
-      name: 'sudheer',
-      age: 22,
-    },
-    {
-      id: generateRandomNumber(),
-      name: 'lokesh',
-      age: 24,
-    },
+    {id: generateRandomNumber(),name: 'sudheer',age: 22,},
+    {id: generateRandomNumber(),name: 'lokesh',age: 24,},
   ]);
 
   const userName = ref('');
@@ -88,4 +80,26 @@ export const isSign = defineStore('mydata', () => {
 export const enteredColor = defineStore('mydata', () => {
   const userColor = ref(true);
   return { userColor }
+});
+export const Pokemon = defineStore('pokemon', () => {
+  const searchedPokemon = ref("bulbasaur")
+  const playCards = ref([]);
+  const fetchCards = async () => {
+    try {
+      const response = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${searchedPokemon.value}/`);
+      const data = await response.json();
+      if (response.ok) {
+        playCards.value = data;
+      } else {
+        console.error("Error fetching users:", data);
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+  return {
+    fetchCards,
+    playCards,
+    searchedPokemon
+  };
 });

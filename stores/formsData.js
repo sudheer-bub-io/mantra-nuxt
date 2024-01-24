@@ -30,8 +30,8 @@ export const AccessFormData = defineStore('accessFormData', () => {
       loggedInUser: null,
       data: {
         registeredUsers: [],
-        studentInfo: [],
-        collegeData: [],
+        StudentData: [],
+        CollegeData: [],
       },
     
       initialize: () => {
@@ -41,11 +41,11 @@ export const AccessFormData = defineStore('accessFormData', () => {
           }
         }
       },
-    
       storeUser: (user, formType) => {
         if (Object.keys(userData.data).includes(formType)) {
+          console.log(formType)
           userData.data[formType].push(user);
-    
+      
           if (typeof localStorage !== 'undefined') {
             localStorage.setItem(formType, JSON.stringify(userData.data[formType]));
           }
@@ -68,16 +68,8 @@ export const AccessFormData = defineStore('accessFormData', () => {
 export const NavData = defineStore('navData', () => {
 
   const defaultNav = [
-    {
-      id: 1,
-      toAddress: '/userAuthentication/register',
-      navName: "Register"
-    },
-    {
-      id: 2,
-      toAddress: '/userAuthentication/login',
-      navName: "Login"
-    },
+    {id: 1,toAddress: '/userAuthentication/register', navName: "Register"},
+    { id: 2,toAddress: '/userAuthentication/login',navName: "Login" },
   
   ]
 
@@ -87,7 +79,9 @@ export const NavData = defineStore('navData', () => {
     {id: 3,  toAddress: '/rock-paper-scissor',  navName: "rps Game"},
     {id: 4,toAddress: '/crud-users',navName: "crud users"},
     {id: 3,toAddress: '/quote',navName: "Quote"},
+    { id: 6, toAddress: '/pokemon-cards', navName: "Pokemon"},
     { id: 5, toAddress: '/userAuthentication/login', navName: "LogOut"},
+   
   ]
   return {defaultNav,customNav}
 })

@@ -1,28 +1,23 @@
 <script setup>
 import { defineProps } from 'vue';
-const userData = defineProps(['storedData'])
+const userData = defineProps(['storedData', 'Header'])
 console.log(userData.storedData)
 </script>
 <template>
-    <table class="styled-table">
-        <thead>
-          <tr>
-            <th>referenceId Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Student Id </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in userData.storedData" :key="index">
-            <td>{{ item.query }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.studentId }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th v-for="header in Header" :key="header">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <tr v-for="(item, index) in storedData" :key="index">
+        <td v-for="key in Header" :key="key">{{ item[key.toLowerCase()] || item[key.toLowerCase() + 'Id'] }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
+
 <style>
 .buttons {
   display: flex;

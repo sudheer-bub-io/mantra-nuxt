@@ -22,6 +22,9 @@ const storedData = ref([]);
 const studentData = ref([]);
 const button = "submit";
 const selectedForm = ref(null);
+const selectedHeader = ref([]);
+const studentHeaders = ['studentid','Name','Email','query','password'];
+const CollegeHeaders = ['reference','Name','Email','Student'];
 
 const userSubmitedForm = ref(null);
 
@@ -33,9 +36,9 @@ function toggleState(target) {
 }
 
 const handleFormChange = () => {
-  console.log('Selected Form:', selectedForm.value);
+  console.log(selectedForm.value);
+  selectedForm.value=='StudentData'?selectedHeader.value=studentHeaders:selectedHeader.value=CollegeHeaders
   const data = localStorage.getItem(selectedForm.value);
-  console.log(data);
   storedData.value = JSON.parse(data) || [];
 };
 
@@ -59,20 +62,19 @@ const handleFormSubmit = (formD, message) => {
   if (isValid) {
     if (message == 'studentForm') {
       formsData.userData.storeUser({
-        studentId: formD.studentid,
+        studentid: formD.studentid,
         name: formD.name,
         email: formD.email,
         query: formD.enterquery,
         password: formD.entersomething,
       }, "StudentData");
       toast.success(`You're successfully registered`);
-    }
-    else if (message == 'collegeForm') {
+    } else if (message == 'collegeForm') {
       formsData.userData.storeUser({
-        referenceId: formD.referenceid,
+        reference: formD.referenceid,
         name: formD.name,
         email: formD.email,
-        studentId: formD.studentid
+        student: formD.studentid
       }, "CollegeData");
       toast.success(`You're successfully registered`);
     }
@@ -118,7 +120,7 @@ onMounted(() => {
             <option value="CollegeData">College Form</option>
           </select>
         </div>
-        <Tablecomponent :storedData="storedData" />
+        <Tablecomponent :storedData="storedData" :Header="selectedHeader" />
       </div>
     </div>
   </div>
