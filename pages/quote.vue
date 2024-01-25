@@ -8,15 +8,13 @@
       <p class="absolute bottom-0 right-10 text-white text-xl z-10 text-blue-950">{{ quotes.author }}</p>
     </div>
     <button @click="getNewQuote" class="ml-96 bg-green-400 rounded-md h-8 mt-2 text-lg text-white">Get New One</button>
+
     
   </template>
-
-  
   <script setup>
   import { ref } from 'vue';
   const {$randomNumber} = useNuxtApp();
   const number = $randomNumber(3);
-  
   definePageMeta({
     layout: 'custom',
 })

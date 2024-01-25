@@ -20,14 +20,17 @@ const message = 'Register to Login ';
 const errors = ref(store.errors);
 
 const updateFieldValue = (fieldName, value) => {
+  console.log(fieldName)
   const field = registerdata.value.find(f => f.name === fieldName);
   if (field) {
     field.value = value;
+    console.log(field.value)
   }
   ;
 };
 
 const handleFormSubmit = (formData) => {
+  console.log("I got submited")
   const isValid = $checkInputFeild(formData);
   if (isValid) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
