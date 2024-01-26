@@ -24,7 +24,7 @@ function previous() {
         <div class="mt-0  bg-[url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png')] ">
             <img @click="previous" class=" w-7 h-7   mb-8 ml-0" src="@/assets/images/back.png" alt="Day1"> 
             <div class=" w-44">
-                <img src="@/assets/images/user.jpeg" class="userImg w-34 rounded-md " id="SingleUserImg">
+                <img src="@/assets/images/user.png" class="userImg w-34 rounded-md h-32 ml-8" id="SingleUserImg">
                 <h1 class="text-2xl font-medium pt-3 ml-12" id="singleUserH1">{{ userData.username }}</h1>
             </div>
         </div>

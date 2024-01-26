@@ -51,9 +51,6 @@ export const crudusers = defineStore('mydata2', () => {
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100);
   }
-
-  const userName = ref('');
-  const userAge = ref('');
   const updateuserName = ref('');
   const updateuserAge = ref('');
   const updatedId = ref(0)
