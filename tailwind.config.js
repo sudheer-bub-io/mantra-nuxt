@@ -1,4 +1,4 @@
-
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     './nuxt/**/*.{vue,js}',
@@ -6,11 +6,8 @@ export default {
   ],
   theme: {
     extend: {
-      width: {
-        '26': '109px',
-      },
-      colors: {
-        black: "rgb(203 213 225)",
+      width:{
+        '26':'109px'
       },
       animation: {
         'gradient-animation': 'gradient-animation 18s ease infinite',
@@ -29,7 +26,8 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-background': 'linear-gradient(300deg, rgb(203 213 225), rgb(148 163 184), rgb(71 85 105))',
+        'gradient-background': 'linear-gradient(300deg,  #00bfff, #ff4c68, #ef8172)',
+        'gradient-background2': 'linear-gradient(300deg,  rgb(203 213 225) ,rgb(148 163 184), rgb(71 85 105))',
       },
       backgroundSize: {
         '180%': '180%',
@@ -37,9 +35,4 @@ export default {
     },
   },
   plugins: [],
-  variants: {
-    extend: {
-      backgroundColor: ['group-hover'],
-    },
-  },
-};
+}

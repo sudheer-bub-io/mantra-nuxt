@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-xs group-hover:bg-gradient-background bg-white shadow-lg rounded-lg overflow-hidden my-4 transition-transform transform group-hover:-translate-y-10"
+    class="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-4 transition-transform transform group hover:bg-gradient-background hover:-translate-y-10"
   >
     <img class="w-1/3 ml-28 h-18 object-cover rounded-lg object-center" src="../assets/images/user.png" alt="avatar">
     <div class="py-4 px-6">
@@ -9,7 +9,7 @@
       </h1>
       <div class="flex items-center mt-4 text-gray-700">
         <img width="48" height="48" class="h-6 w-6 fill-current" src="https://img.icons8.com/ios-filled/50/phone.png" alt="phone" />
-        <h1 class="px-2 text-md  group-hover:text-white">{{ userData.phone }}</h1>
+        <h1 class="px-2 text-md group-hover:text-white">{{ userData.phone }}</h1>
       </div>
       <div class="flex items-center mt-4 text-gray-700">
         <svg class="h-6 w-6 fill-current" viewBox="0 0 512 512">
@@ -25,42 +25,11 @@
     </div>
   </div>
 </template>
+
 <script setup>
-import { defineProps, ref, watchEffect } from 'vue';
+import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 
 const { userData } = defineProps(['userData']);
 const router = useRouter();
-
-const isBlue = ref(false);
-const isRed = ref(false);
-const isOrange = ref(false);
-
-watchEffect(() => {
-  if (userData && userData.favoriteColor) {
-    isBlue.value = userData.favoriteColor === 'blue';
-    isRed.value = userData.favoriteColor === 'red';
-    isOrange.value = userData.favoriteColor === 'orange';
-  }
-});
 </script>
-
-<style scoped>
-.group-hover:bg-gradient-background {
-  background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
-  background-size: 180% 180%;
-  animation: gradient-animation 18s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-</style>

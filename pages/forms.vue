@@ -29,14 +29,12 @@ const CollegeHeaders = ['reference','Name','Email','Student'];
 const userSubmitedForm = ref(null);
 
 function toggleState(target) {
-  console.log(target);
   coll.value = target === 'coll' ? !coll.value : false;
   stud.value = target === 'stud' ? !stud.value : false;
   showEnterdedData.value = target === 'showData' ? !showEnterdedData.value : false;
 }
 
 const handleFormChange = () => {
-  console.log(selectedForm.value);
   selectedForm.value=='StudentData'?selectedHeader.value=studentHeaders:selectedHeader.value=CollegeHeaders
   const data = localStorage.getItem(selectedForm.value);
   storedData.value = JSON.parse(data) || [];

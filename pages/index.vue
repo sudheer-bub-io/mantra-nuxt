@@ -2,7 +2,6 @@
     <h1 class="ml-5">logInIn To Enter</h1>
 </template>
 <script setup>
-console.log("hello")
  // you will get access to the myobject1 due to inheritance behaviour 
 
 // const QuoteService = (() => {

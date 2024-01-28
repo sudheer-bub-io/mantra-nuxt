@@ -1,7 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
 const userData = defineProps(['storedData', 'Header'])
-console.log(userData.storedData)
 </script>
 <template>
   <table class="styled-table">

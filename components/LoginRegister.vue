@@ -2,7 +2,7 @@
   <section class=" dark:bg-gray-900 mt-20">
     <div class="flex flex-col items-center  px-6 py-8 mx-auto lg:py-0">
       <div
-        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        class="w-full shadow-lg bg-slate-50 mb-4 p-4 rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white ml-20">
             {{ formMessage }}
@@ -47,4 +47,18 @@ const handleSubmit = () => {
   emits('onSubmit', formData,props.formMessage);
 };
 </script>
-  
+<style scoped>
+  .custom-shadow {
+    position: relative;
+  }
+
+  .custom-shadow:before {
+    content: '';
+    position: absolute;
+    top: -8px; /* Adjust the distance of the shadow from the top */
+    left: 0;
+    right: 0;
+    height: 8px; /* Adjust the height of the shadow */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  }
+</style>

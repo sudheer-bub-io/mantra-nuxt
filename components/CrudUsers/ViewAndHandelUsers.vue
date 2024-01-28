@@ -6,7 +6,7 @@ const users = crudusers();
   <div>
     <div class="flex">
       <div v-if="users.updateButtonClicked">
-        <div class="emitFormContainer bg-slate-300">
+        <div class="emitFormContainer bg-slate-100">
           <h2 class="text-center p-5 text-xl font-medium ">Update User</h2>
           <form @submit.prevent="users.onUpdateUserClicked">
               <div class="form-container">
