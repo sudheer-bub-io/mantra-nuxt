@@ -1,10 +1,3 @@
-<template>
-  <form @submit.prevent="handleFormSubmit">
-    <LoginRegister :fields="registerdata" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-      :submitButtonText="Register" :formMessage="message" :errors="errors" />
-  </form>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import { AccessFormData } from '~/stores/formsData';
@@ -13,10 +6,10 @@ import 'vue-toastification/dist/index.css';
 
 const toast = useToast();
 const store = AccessFormData();
-const registerdata = ref(store.registerData);
+
 const { $checkInputFeild } = useNuxtApp();
-const Register = 'Register';
-const message = 'Register to Login ';
+
+const registerdata = ref(store.registerData[0]);
 const errors = ref(store.errors);
 
 const updateFieldValue = (fieldName, value) => {
@@ -30,7 +23,6 @@ const updateFieldValue = (fieldName, value) => {
 };
 
 const handleFormSubmit = (formData) => {
-  console.log("I got submited")
   const isValid = $checkInputFeild(formData);
   if (isValid) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -47,7 +39,6 @@ const handleFormSubmit = (formData) => {
         email: formData.email,
         password: formData.password,
       },"registeredUsers");
-
       toast.success(`You're successfully registered`);
       navigateTo('/userAuthentication/login');
     }
@@ -57,3 +48,15 @@ const handleFormSubmit = (formData) => {
   }
 };
 </script>
+
+
+<template>
+  <div class="mt-20">
+    <form @submit.prevent="handleFormSubmit">
+      <FormComponent :fields="registerdata" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
+        :submitButtonText="store.registerData[1]" :formMessage="store.registerData[2]" :errors="errors" />
+    </form>
+  </div>
+  
+</template>
+

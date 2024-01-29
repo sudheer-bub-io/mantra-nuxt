@@ -35,14 +35,10 @@ export const usersdata = defineStore('userdata', () => {
 })
 
 export const crudusers = defineStore('mydata2', () => {
-  const submitUser = [
+  const submitUser = [[
     { id: 1, type: "text", name: "userName", placeholder: "userName", value: '' },
     { id: 2, type: "text", name: "UserAge", placeholder: "UserAge", value: '' },
-  ]
-  const updateUser = [
-    { id: 1, type: "text", name: "userName", placeholder: "userName", value: '' },
-    { id: 2, type: "text", name: "UserAge", placeholder: "UserAge", value: '' },
-  ]
+  ],"Save User","Add User"]
   const uservalues = ref([
     { id: generateRandomNumber(), name: 'sudheer', age: 22, },
     { id: generateRandomNumber(), name: 'lokesh', age: 24, },

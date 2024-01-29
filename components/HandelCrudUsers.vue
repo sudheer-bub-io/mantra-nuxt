@@ -31,8 +31,8 @@ const users = crudusers();
         <p class="text-xl pt-5 pl-5"><span class="formSpan">userName : </span>{{ user.name }}</p>
         <p class="text-xl pl-5"><span class="formSpan">age :</span> {{ user.age }}</p>
         <div class="flex">
-          <button @click="() => users.onUpdateUser(user.id,user.name,user.age)" id="deleteButton">Update</button>
-          <button @click="() => users.onDeleteUser(user.id)" id="deleteButton" class="bg-blue-400">delete</button>
+          <button @click="() => users.onUpdateUser(user.id,user.name,user.age)"  class="bg-yellow-400 rounded-lg w-20 h-10 m-3">Update</button>
+          <button @click="() => users.onDeleteUser(user.id)"  class="bg-red-800 rounded-lg w-20 h-10 m-3 text-white">delete</button>
         </div>
       </div>
     </div>

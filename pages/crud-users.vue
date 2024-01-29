@@ -8,9 +8,7 @@ definePageMeta({
     layout: 'custom'
 })
 const users = crudusers();
-const addUser = ref(users.submitUser);
-const userSubmit = "save User"
-const message = "Add User"
+const addUser = ref(users.submitUser[0]);
 
 const updateFieldValue = (fieldName, value) => {
   console.log(fieldName)
@@ -52,8 +50,8 @@ const handleFormSubmit = (formData) => {
     <div class="flex justify-center">
     </div>
     <div>
-        <LoginRegister :fields="addUser" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-        :submitButtonText="userSubmit" :formMessage="message"/>
-        <CrudUsersViewAndHandelUsers />
+        <FormComponent :fields="addUser" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
+        :submitButtonText="users.submitUser[1]" :formMessage="users.submitUser[2]"/>
+        <HandelCrudUsers />
     </div>
 </template>
