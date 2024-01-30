@@ -19,8 +19,7 @@ const updateFieldValue = (fieldName, value) => {
     field.value = value;
     console.log(field.value)
   }
-  ;
-};
+}
 
 const handleFormSubmit = (formData) => {
   const isValid = $checkInputFeild(formData);
