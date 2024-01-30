@@ -2,10 +2,9 @@
   <div class="mt-20">
     <form @submit.prevent="handleFormSubmit">
       <FormComponent :fields="logindata" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-        :submitButtonText="store.loginData[1]" :formMessage="store.loginData[2]" />
+        :submitButtonText="store.loginData[1]" :formMessage="store.loginData[2]" :formsInfo="store.loginData[3]" />
     </form>
   </div>
-  
 </template>
   
 <script setup>
@@ -13,6 +12,8 @@ import { ref} from 'vue';
 import { AccessFormData } from '../stores/formsData';
 import { useToast } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+import { currentUser } from '@/stores/myStore';
+const user = currentUser();
 
 const toast = useToast();
 const store = AccessFormData();
@@ -35,6 +36,7 @@ const handleFormSubmit = (formData) => {
   } else {
     if (loggedInUser) {
       store.userData.loggedInUser = loggedInUser;
+      user.User=formData.username
       toast.success(`you're successfully Logged In `);
       navigateTo('/all-users');
     } else {

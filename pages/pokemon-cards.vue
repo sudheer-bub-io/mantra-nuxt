@@ -10,7 +10,6 @@ const pokemon = Pokemon();
 
 onMounted(async () => {
   await pokemon.fetchCards();
-  console.log(pokemon.playCards)
 });
 async function handelSubmit() {
   await pokemon.fetchCards();
@@ -51,7 +50,7 @@ async function handelSubmit() {
         </div>
     </div>
     <div v-else>
-        <h1>Hello</h1>
+        <h1>Loading......</h1>
     </div>
     
       <div></div>

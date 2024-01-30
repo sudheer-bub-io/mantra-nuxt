@@ -54,7 +54,7 @@ const handleFormSubmit = (formData) => {
   <div class="mt-20">
     <form @submit.prevent="handleFormSubmit">
       <FormComponent :fields="registerdata" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-        :submitButtonText="store.registerData[1]" :formMessage="store.registerData[2]" :errors="errors" />
+        :submitButtonText="store.registerData[1]" :formMessage="store.registerData[2]" :errors="errors" :formsInfo="store.registerData[3]"/>
     </form>
   </div>
   

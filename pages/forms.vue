@@ -23,7 +23,6 @@ const storedData = ref([]);
 const selectedForm = ref(null);
 const selectedHeader = ref([]);
 
-
 function toggleState(target) {
   for (const key in state.value) {
     state.value[key] = key === target ? !state.value[key] : false;
@@ -100,6 +99,7 @@ const handleFormSubmit = (formD, message) => {
       </div>
       <div v-if="state.showEnteredData">
         <div class="relative inline-block ml-36">
+          <h1>Select Form Type</h1>
           <select v-model="selectedForm" @change="handleFormChange"
             class="block appearance-none w-32 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none focus:border-blue-500">
             <option value="StudentData">Student Form</option>

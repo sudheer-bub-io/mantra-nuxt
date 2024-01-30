@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       width:{
-        '26':'109px'
+        '26':'109px',
+        'con':'700px'
       },
       animation: {
         'gradient-animation': 'gradient-animation 18s ease infinite',

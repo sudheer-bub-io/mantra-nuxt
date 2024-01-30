@@ -1,6 +1,7 @@
 <template>
-    <h1 class="ml-5">logInIn To Enter</h1>
-    </template>
+  <h1 class="ml-5">logInIn To Enter</h1>
+</template>
+
     <!-- <div class="flex items-center">
       <div class="bg-green-500 m-10 h-10 rounded-lg" :style="{ width: `${width1}px` }" @click="width1 = 10">one</div>
       <div class="bg-green-500 m-10 w-32 h-10 rounded-lg" :style="{ width: `${width2}px` }"  @click="width2 = 70">two</div>

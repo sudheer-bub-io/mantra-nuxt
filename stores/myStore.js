@@ -4,10 +4,6 @@ import { useToast } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 
 const toast = useToast();
-
-function generateRandomNumber() {
-  return Math.floor(Math.random() * 100);
-}
 export const userDataStore = defineStore('mydata', () => {
   return { data };
 });
@@ -38,12 +34,11 @@ export const crudusers = defineStore('mydata2', () => {
   const submitUser = [[
     { id: 1, type: "text", name: "userName", placeholder: "userName", value: '' },
     { id: 2, type: "text", name: "UserAge", placeholder: "UserAge", value: '' },
-  ],"Save User","Add User"]
+  ], "Save User", "Add User"]
   const uservalues = ref([
     { id: generateRandomNumber(), name: 'sudheer', age: 22, },
     { id: generateRandomNumber(), name: 'lokesh', age: 24, },
   ]);
-
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100);
   }
@@ -112,4 +107,8 @@ export const Pokemon = defineStore('pokemon', () => {
     playCards,
     searchedPokemon
   };
+});
+export const currentUser = defineStore('currentUser', () => {
+  const User = ref(null);
+  return { User }
 });

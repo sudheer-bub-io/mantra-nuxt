@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-4 transition-transform transform group hover:bg-gradient-background hover:-translate-y-10"
+    class="max-w-xs bg-white shadow-lg rounded-lg border border-slate-200 overflow-hidden my-4 transition-transform transform group hover:bg-gradient-background hover:-translate-y-10"
   >
     <img class="w-1/3 ml-28 h-18 object-cover rounded-lg object-center" src="../assets/images/user.png" alt="avatar">
     <div class="py-4 px-6">
@@ -29,7 +29,6 @@
 <script setup>
 import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
-
-const { userData } = defineProps(['userData']);
 const router = useRouter();
+const { userData } = defineProps(['userData']);
 </script>

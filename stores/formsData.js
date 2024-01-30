@@ -4,12 +4,12 @@ export const AccessFormData = defineStore('accessFormData', () => {
   const loginData = [[
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ],"Login","Login To Your Account "];
+  ],"Login","Login To Your Account ",["Don't Have an Account","/userAuthentication/register","signUp"]];  
   const registerData = [  [
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'email', name: 'email', placeholder: 'Email', value: '' },
     { id: 3, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ],"Register","Register to Login"];
+  ],"Register","Register to Login",["Already have an Account","/userAuthentication/login","logIn"]];
 
   const collegeData = [[
     { id: 1, type: "text", name: "referenceid", placeholder: "refernnce Id", value: '' },
@@ -82,7 +82,6 @@ export const NavData = defineStore('navData', () => {
     { id: 3, toAddress: '/quote', navName: "Quote" },
     { id: 6, toAddress: '/pokemon-cards', navName: "Pokemon" },
     { id: 5, toAddress: '/userAuthentication/login', navName: "LogOut" },
-
   ]
   return { defaultNav, customNav }
 })

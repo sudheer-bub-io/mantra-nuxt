@@ -20,7 +20,7 @@ function previous() {
 }
 </script>
 <template>
-    <div class="flex  w-96 bg-white-900 rounded-full shadow-slate-900" id="card">
+    <div class="flex  w-96  h-96 shadow-slate-900" id="card">
         <div class="mt-0  bg-[url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png')] ">
             <img @click="previous" class=" w-7 h-7   mb-8 ml-0" src="@/assets/images/back.png" alt="Day1">
             <div class=" w-44">
@@ -29,7 +29,7 @@ function previous() {
             </div>
         </div>
         <div>
-            <div class=" w-96 bg-[url('https://www.transparenttextures.com/patterns/beige-paper.png')]  pb-5"
+            <div class=" w-96 bg-[url('https://www.transparenttextures.com/patterns/beige-paper.png')]  pb-5"   
                 id="cardDetails">
                 <div class="">
                     <h1 class="text-2xl font-bold pt-5 ml-3 italic uppercase"> {{ userData.name && userData.name.firstname
