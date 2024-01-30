@@ -17,4 +17,4 @@ if (import.meta.hot) {
 
 
 
-export default /*@__PURE__*/ defuFn(inlineConfig)
+export default /* #__PURE__ */ defuFn(inlineConfig)
