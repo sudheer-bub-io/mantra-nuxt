@@ -1,15 +1,41 @@
 <script setup>
 import { defineProps } from 'vue';
 const userData = defineProps(['storedData', 'Header'])
+
+function handelSort() {
+  userData.storedData.sort((a, b) => {
+    const idA = parseInt(a.studentid);
+    const idB = parseInt(b.studentid);
+
+    if (!isNaN(idA) && !isNaN(idB)) {
+      return idA - idB;
+    } else if (isNaN(idA) && isNaN(idB)) {
+      return 0;
+    } else if (isNaN(idA)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  })
+}
+function handelSortByName() {
+  userData.storedData.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+}
 </script>
 <template>
+  <button @click="handelSort" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By stud Id</button>
+  <button @click="handelSortByName" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By Name</button>
   <table class="styled-table">
     <thead>
       <tr>
         <th v-for="header in Header" :key="header">{{ header }}</th>
       </tr>
     </thead>
-    <tbody> 
+    <tbody>
       <tr v-for="(item, index) in storedData" :key="index">
         <td v-for="key in Header" :key="key">{{ item[key.toLowerCase()] || item[key.toLowerCase() + 'Id'] }}</td>
       </tr>

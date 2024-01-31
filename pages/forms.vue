@@ -66,7 +66,7 @@ const handleFormSubmit = (formD, message) => {
         reference: formD.referenceid,
         name: formD.name,
         email: formD.email,
-        student: formD.studentid
+        studentid: formD.studentid
       }, "CollegeData");
       useToast().success(`You're successfully registered`);
       $reloadFunction(1500);

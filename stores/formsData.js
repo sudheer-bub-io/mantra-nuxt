@@ -16,7 +16,7 @@ export const AccessFormData = defineStore('accessFormData', () => {
     { id: 2, type: "text", name: "name", placeholder: "user Name", value: '' },
     { id: 3, type: "text", name: "email", placeholder: "Enter Your Email", value: '' },
     { id: 4, type: "text", name: "studentid", placeholder: "Student Id", value: '' },
-  ], "collegeForm", ['reference', 'Name', 'Email', 'Student'],"Submit"
+  ], "collegeForm", ['reference', 'Name', 'Email', 'studentid'],"Submit"
   ];
 
   const studentData = [[

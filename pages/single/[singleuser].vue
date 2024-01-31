@@ -21,7 +21,7 @@ function previous() {
 </script>
 <template>
     <div class="flex  w-96  h-96 shadow-slate-900" id="card">
-        <div class="mt-0  bg-[url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png')] ">
+        <div class="mt-0  bg-[url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png')]">
             <img @click="previous" class=" w-7 h-7   mb-8 ml-0" src="@/assets/images/back.png" alt="Day1">
             <div class=" w-44">
                 <img src="@/assets/images/user.png" class="userImg w-34 rounded-md h-32 ml-8" id="SingleUserImg">
@@ -71,4 +71,5 @@ function previous() {
 #cardDetails {
     background-color: rgb(245 245 245);
     background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
+    width: 410px;
 }</style>

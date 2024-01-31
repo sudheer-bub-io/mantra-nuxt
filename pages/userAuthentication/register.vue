@@ -7,7 +7,6 @@ const store = AccessFormData();
 const { $checkInputFeild } = useNuxtApp();
 
 const registerdata = ref(store.registerData[0]);
-const errors = ref(store.errors);
 
 const updateFieldValue = (fieldName, value) => {
   console.log(fieldName)
@@ -50,7 +49,7 @@ const handleFormSubmit = (formData) => {
   <div class="mt-20">
     <form @submit.prevent="handleFormSubmit">
       <FormComponent :fields="registerdata" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-        :submitButtonText="store.registerData[1]" :formMessage="store.registerData[2]" :errors="errors" :formsInfo="store.registerData[3]"/>
+        :submitButtonText="store.registerData[1]" :formMessage="store.registerData[2]" :formsInfo="store.registerData[3]"/>
     </form>
   </div>
   

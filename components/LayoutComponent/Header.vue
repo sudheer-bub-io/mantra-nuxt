@@ -1,15 +1,6 @@
 <script setup>
 import { currentUser } from '@/stores/myStore';
-import { useRouter } from 'vue-router';
-const router = useRouter();
 const user = currentUser();
-const btnShowed = ref(false)
-function logoutUser(){
-  router.push("/")
-}
-function showLogoutBtn(){
-  btnShowed.value=!btnShowed.value
-}
 </script>
 <template>
     <div
@@ -19,11 +10,6 @@ function showLogoutBtn(){
       <div class="flex">
         <img class="w-18 h-18   " width="68" height="48" src="@/assets/images/sudheer.png" alt="Sudheer" @click="showLogoutBtn" />
         <p class="ml-3 mr-4">{{user.User}}</p>
-        <div v-if="user.User">
-          <div v-if="btnShowed">
-            <button @click="logoutUser" class="bg-orange-400 text-white w-20 rounded-md h-8 mt-4">logout</button>
-          </div>
-        </div>
       </div>
     </div>
 </template>
