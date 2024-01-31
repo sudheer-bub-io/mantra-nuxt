@@ -1,9 +1,6 @@
 
 import { defineStore } from "pinia";
 import { useToast } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
-
-const toast = useToast();
 export const userDataStore = defineStore('mydata', () => {
   return { data };
 });
@@ -65,9 +62,9 @@ export const crudusers = defineStore('mydata2', () => {
 
     if (index !== -1) {
       uservalues.value.splice(index, 1, updatedObject);
-      toast.success('User Updated Successfully');
+      useToast().success('User Updated Successfully');
     } else {
-      toast.error('User not found');
+      useToast().error('User not found');
     }
     updateButtonClicked.value = !updateButtonClicked.value;
     updatedId.value = 0;

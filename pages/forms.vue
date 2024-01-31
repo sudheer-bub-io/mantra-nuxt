@@ -2,12 +2,10 @@
 import { ref} from 'vue';
 import { AccessFormData } from "@/stores/formsData";
 import { useToast } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
 
 definePageMeta({
   layout: 'custom'
 });
-const toast = useToast();
 const formsData = AccessFormData();
 const { $checkInputFeild } = useNuxtApp();
 const {$reloadFunction} = useNuxtApp();
@@ -61,7 +59,7 @@ const handleFormSubmit = (formD, message) => {
         query: formD.enterquery,
         password: formD.entersomething,
       }, "StudentData");
-      toast.success(`You're successfully registered`);
+      useToast().success(`You're successfully registered`);
       $reloadFunction(1500);
     } else if (message == 'collegeForm') {
       formsData.userData.storeUser({
@@ -70,7 +68,7 @@ const handleFormSubmit = (formD, message) => {
         email: formD.email,
         student: formD.studentid
       }, "CollegeData");
-      toast.success(`You're successfully registered`);
+      useToast().success(`You're successfully registered`);
       $reloadFunction(1500);
     }
   }

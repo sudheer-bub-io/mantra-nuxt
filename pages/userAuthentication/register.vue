@@ -2,9 +2,6 @@
 import { ref } from 'vue';
 import { AccessFormData } from '~/stores/formsData';
 import { useToast } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
-
-const toast = useToast();
 const store = AccessFormData();
 
 const { $checkInputFeild } = useNuxtApp();
@@ -27,10 +24,10 @@ const handleFormSubmit = (formData) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*_-]+$/
     if (!emailRegex.test(formData.email)) {
-      toast.error('Invalid email format');
+      useToast().error('Invalid email format');
     }
     else if (!passwordRegex.test(formData.password)) {
-      toast.error('Enter Valid password')
+      useToast().error('Enter Valid password')
     }
     else {
       store.userData.storeUser({
@@ -38,12 +35,12 @@ const handleFormSubmit = (formData) => {
         email: formData.email,
         password: formData.password,
       },"registeredUsers");
-      toast.success(`You're successfully registered`);
+      useToast().success(`You're successfully registered`);
       navigateTo('/userAuthentication/login');
     }
   }
   else {
-    toast.error('Enter all the feild values ')
+    useToast().error('Enter all the feild values ')
   }
 };
 </script>

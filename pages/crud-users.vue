@@ -1,9 +1,6 @@
 <script setup>
 import { crudusers } from '@/stores/myStore';
 import { useToast } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
-
-const toast = useToast();
 definePageMeta({
     layout: 'custom'
 })
@@ -30,7 +27,7 @@ const handleFormSubmit = (formData) => {
     };
     const isValid = $checkInputFeild(userValue);
     users.uservalues.push(userValue)
-     toast.success('User Added Successfully');
+     useToast().success('User Added Successfully');
     // if (!isValid) {
     //   toast.error('Enter All The Fields');
     // } else {

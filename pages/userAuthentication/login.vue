@@ -10,12 +10,11 @@
 <script setup>
 import { ref} from 'vue';
 import { AccessFormData } from '../stores/formsData';
-import { useToast } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
+import { useToast } from 'vue-toastification'
 import { currentUser } from '@/stores/myStore';
 const user = currentUser();
 
-const toast = useToast();
+
 const store = AccessFormData();
 const logindata = ref(store.loginData[0]);
 const { $checkInputFeild } = useNuxtApp();
@@ -32,15 +31,15 @@ const handleFormSubmit = (formData) => {
   const loggedInUser = store.userData.checkLogin(formData.username, formData.password);
   const isValid = $checkInputFeild(formData);
   if (!isValid) {
-    toast.error(` UserName and Password Cannot be empty`)
+    useToast().error(` UserName and Password Cannot be empty`)
   } else {
     if (loggedInUser) {
       store.userData.loggedInUser = loggedInUser;
       user.User=formData.username
-      toast.success(`you're successfully Logged In `);
+      useToast().success(`you're successfully Logged In `);
       navigateTo('/all-users');
     } else {
-      toast.error('InValid Login Credentials');
+      useToast().error('InValid Login Credentials');
     }
   }
 };
