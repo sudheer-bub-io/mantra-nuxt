@@ -4,19 +4,19 @@ export const AccessFormData = defineStore('accessFormData', () => {
   const loginData = [[
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ],"Login","Login To Your Account ",["Don't Have an Account","/userAuthentication/register","signUp"]];  
-  const registerData = [  [
+  ], "Login", "Login To Your Account ", ["Don't Have an Account", "/userAuthentication/register", "signUp"]];
+  const registerData = [[
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'email', name: 'email', placeholder: 'Email', value: '' },
     { id: 3, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ],"Register","Register to Login",["Already have an Account","/userAuthentication/login","logIn"]];
+  ], "Register", "Register to Login", ["Already have an Account", "/userAuthentication/login", "logIn"]];
 
   const collegeData = [[
     { id: 1, type: "text", name: "referenceid", placeholder: "refernnce Id", value: '' },
     { id: 2, type: "text", name: "name", placeholder: "user Name", value: '' },
     { id: 3, type: "text", name: "email", placeholder: "Enter Your Email", value: '' },
     { id: 4, type: "text", name: "studentid", placeholder: "Student Id", value: '' },
-  ], "collegeForm", ['reference', 'Name', 'Email', 'studentid'],"Submit"
+  ], "collegeForm", ['reference', 'Name', 'Email', 'studentid'], "Submit"
   ];
 
   const studentData = [[
@@ -25,7 +25,7 @@ export const AccessFormData = defineStore('accessFormData', () => {
     { id: 3, type: "text", name: "email", placeholder: "EnterEmail", value: '' },
     { id: 4, type: "textArea", name: "enterquery", placeholder: "Enter Query", value: '' },
     { id: 5, type: "text", name: "entersomething", placeholder: "EnterSomething", value: '' },
-  ], "studentForm", ['studentid', 'Name', 'Email', 'query', 'password'],"Submit"];
+  ], "studentForm", ['studentid', 'Name', 'Email', 'query', 'password'], "Submit"];
 
   const userData = {
     loggedInUser: null,
@@ -44,10 +44,10 @@ export const AccessFormData = defineStore('accessFormData', () => {
     },
     storeUser: (user, formType) => {
       if (Object.keys(userData.data).includes(formType)) {
-        console.log(formType)
         userData.data[formType].push(user);
 
         if (typeof localStorage !== 'undefined') {
+          console.log(userData.data[formType])
           localStorage.setItem(formType, JSON.stringify(userData.data[formType]));
         }
       } else {
@@ -62,7 +62,7 @@ export const AccessFormData = defineStore('accessFormData', () => {
 
   userData.initialize();
 
-  return { loginData, registerData, collegeData, studentData, userData};
+  return { loginData, registerData, collegeData, studentData, userData };
 });
 
 

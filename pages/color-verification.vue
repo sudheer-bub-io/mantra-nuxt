@@ -1,40 +1,28 @@
-<template>
-    <div class="flex flex-col bg-slate-500 justify-center items-center m-80 ml-96 w-80">
-        <div v-for="color in shuffledColors" class="flex flex-col">
-            <p class="text-white">{{color}}</p>
-        </div>
-        <div class="flex justify-center items-center">
-          <div>
-            <div class="bg-green-300 p-4 m-2 p-24 w-24 h-16" @click="() => userClicked('green')" :id="{ 'blur-sm': userEnteredArray.includes('green') }"></div>
-            <div class="bg-blue-300 p-4 m-2 p-24 w-24 h-16" @click="() => userClicked('blue')" :id="{ 'blur-sm': userEnteredArray.includes('blue') }"></div>
-          </div>
-          <div>
-            <div class="bg-pink-300 p-4 m-2 p-24 w-24 h-16" @click="() => userClicked('pink')" :id="{ 'blur-sm': userEnteredArray.includes('pink') }"></div>
-            <div class="bg-orange-300 p-4 m-2 p-24 w-24 h-16" @click="() => userClicked('orange')" :id="{ 'blur-sm': userEnteredArray.includes('orange') }"></div>
-          </div>
-        </div>
-        <button @click="handelColorCheck" class="w-24 bg-orange-500 h-10 m-10 rounded-md text-white">submit</button>
-    </div>
-  
-  </template>
-  
-  <script setup>
+<script setup>
   import { enteredColor } from "../stores/myStore"
-  const checkColor = enteredColor();
-  
-  const userEnteredArray = [];
-  
+
+  const checkColor = enteredColor()
+  const colors = ["green", "blue", "pink", "yellow"];
+  const shuffledColors = shuffleArray(colors);
+  const userEnteredArray = ref([]);
+  const EnterdWrongOrder = ref(false);
   const userClicked = (value) => {
-    if (!userEnteredArray.includes(value)) {
-      userEnteredArray.push(value);
+    if (!userEnteredArray.value?.includes(value)) {
+      EnterdWrongOrder.value=false;
+      userEnteredArray.value.push(value);
     }
-  };
-  
+  }
+
   function handelColorCheck(){
-    if (arraysAreEqual(shuffledColors, userEnteredArray)) {
+    if (arraysAreEqual(shuffledColors, userEnteredArray.value)) {
       navigateTo("/rock-paper-scissor")
       checkColor.userColor=false;
     } else {
+      if(userEnteredArray.value.length==4){
+        EnterdWrongOrder.value=true;
+        userEnteredArray.value=[];
+        shuffledColors=shuffleArray(colors)
+      }
       console.log("Not Same");
     }
   }
@@ -45,22 +33,40 @@
     return string1 === string2;
   } 
   
-  function shuffleArray(array) {
+  function shuffleArray(array) {                                                   
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
   }
-  
-  const colors = ["green", "blue", "pink", "orange"];
-  const shuffledColors = shuffleArray(colors);
   </script>
+  <template>
+    <div class="flex justify-center items-center mt-44">
+      <div class="flex flex-col bg-green-50 border border-green-300 shadow-lg rounded-md justify-center items-center w-3/12">
+        <h1 class="p-5 text-xl font-black"> Pick Correct Colors to Unlock Game!</h1>
+        <ul class="flex flex-wrap">
+          <li v-for="color in shuffledColors" :key="color" class="inline-block m-1 text-lg">{{ color }}</li>
+        </ul>
+          <div class="flex justify-center items-center">
+            <div>
+              <div class="bg-green-300 p-4 m-2 p-24 w-28 h-20 rounded-md" @click="() => userClicked('green')" :class="{ 'blur-sm': userEnteredArray?.includes('green') }"></div>
+              <div class="bg-blue-300 p-4 m-2 p-24 w-28 h-20 rounded-md" @click="() => userClicked('blue')" :class="{ 'blur-sm': userEnteredArray?.includes('blue') }"></div>
+            </div>
+            <div>
+              <div class="bg-pink-300 p-4 m-2 p-24 w-28 h-20 rounded-md" @click="() => userClicked('pink')" :class="{ 'blur-sm': userEnteredArray?.includes('pink') }"></div>
+              <div class="bg-yellow-200 p-4 m-2 p-24 w-28 h-20 rounded-md" @click="() => userClicked('yellow')" :class="{ 'blur-sm': userEnteredArray?.includes('yellow') }"></div>
+            </div>
+          </div>
+          <p v-if="EnterdWrongOrder" class="text-red-600 text-lg text-bold">Picked wrong colors Try Again! </p>
+          <button @click="handelColorCheck" class="w-24 bg-orange-500 h-10 m-10 rounded-md text-white">submit</button>
+      </div>
+    </div>
+  </template>
   
   <style scoped>
-  #blur-sm {
+  .blur-sm{
     filter: blur(5px);
-    background-color: black;
     border-color: brown;
   }
   </style>

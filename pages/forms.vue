@@ -19,6 +19,7 @@ const state = ref({
 });
 const storedData = ref([]);
 const selectedForm = ref(null);
+const showSortButton = ref(false)
 const selectedHeader = ref([]);
 
 function toggleState(target) {
@@ -31,6 +32,7 @@ const handleFormChange = () => {
   selectedForm.value=='StudentData'?selectedHeader.value=formsData.studentData[2]:selectedHeader.value=formsData.collegeData[2]
   const data = localStorage.getItem(selectedForm.value);
   storedData.value = JSON.parse(data) || [];
+  showSortButton.value=true
 };
 
 
@@ -104,6 +106,6 @@ const handleFormSubmit = (formD, message) => {
             <option value="CollegeData">College Form</option>
           </select>
         </div>
-        <Tablecomponent :storedData="storedData" :Header="selectedHeader" />
+        <Tablecomponent :storedData="storedData" :Header="selectedHeader" :showSortButton="showSortButton" />
       </div>
 </template>

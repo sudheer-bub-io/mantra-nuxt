@@ -27,10 +27,10 @@ const users = crudusers();
       </div>
 
       </div>
-      <div class="users" v-for="user in users.uservalues" :key="user.id">
-        <p class="text-xl pt-5 pl-5"><span class="formSpan">userName : </span>{{ user.name }}</p>
+      <div class="users border border-black-900" v-for="user in users.uservalues" :key="user.id">
+        <p class="text-xl pt-1 pl-5"><span class="formSpan">user : </span>{{ user.name }}</p>
         <p class="text-xl pl-5"><span class="formSpan">age :</span> {{ user.age }}</p>
-        <div class="flex">
+        <div class="flex mt-2 ml-3">
           <button @click="() => users.onUpdateUser(user.id,user.name,user.age)"  class="bg-yellow-400 rounded-lg w-20 h-8 m-3">Update</button>
           <button @click="() => users.onDeleteUser(user.id)"  class="bg-red-800 rounded-lg w-20 h-8 m-3 text-white">delete</button>
         </div>

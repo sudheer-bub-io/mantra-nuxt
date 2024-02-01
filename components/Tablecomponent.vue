@@ -1,12 +1,10 @@
 <script setup>
 import { defineProps } from 'vue';
-const userData = defineProps(['storedData', 'Header'])
-
+const userData = defineProps(['storedData', 'Header','showSortButton'])
 function handelSort() {
   userData.storedData.sort((a, b) => {
     const idA = parseInt(a.studentid);
     const idB = parseInt(b.studentid);
-
     if (!isNaN(idA) && !isNaN(idB)) {
       return idA - idB;
     } else if (isNaN(idA) && isNaN(idB)) {
@@ -27,8 +25,8 @@ function handelSortByName() {
 }
 </script>
 <template>
-  <button @click="handelSort" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By stud Id</button>
-  <button @click="handelSortByName" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By Name</button>
+  <button v-if="showSortButton" @click="handelSort" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By stud Id</button>
+  <button v-if="showSortButton" @click="handelSortByName" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By Name</button>
   <table class="styled-table">
     <thead>
       <tr>
