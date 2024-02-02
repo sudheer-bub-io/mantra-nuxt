@@ -35,7 +35,7 @@ const handleFormSubmit = (formData) => {
         password: formData.password,
       },"registeredUsers");
       useToast().success(`You're successfully registered`);
-      navigateTo('/userAuthentication/login');
+      navigateTo('/');
     }
   }
   else {

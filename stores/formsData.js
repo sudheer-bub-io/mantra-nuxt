@@ -4,12 +4,12 @@ export const AccessFormData = defineStore('accessFormData', () => {
   const loginData = [[
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ], "Login", "Login To Your Account ", ["Don't Have an Account", "/userAuthentication/register", "signUp"]];
+  ], "Login", "Login To Your Account ", ["Don't Have an Account", "/register", "signUp"]];
   const registerData = [[
     { id: 1, type: 'text', name: 'username', placeholder: 'Username', value: '' },
     { id: 2, type: 'email', name: 'email', placeholder: 'Email', value: '' },
     { id: 3, type: 'password', name: 'password', placeholder: 'Password', value: '' },
-  ], "Register", "Register to Login", ["Already have an Account", "/userAuthentication/login", "logIn"]];
+  ], "Register", "Register to Login", ["Already have an Account", "/", "logIn"]];
 
   const collegeData = [[
     { id: 1, type: "text", name: "referenceid", placeholder: "refernnce Id", value: '' },
@@ -31,13 +31,26 @@ export const AccessFormData = defineStore('accessFormData', () => {
     loggedInUser: null,
     data: {
       registeredUsers: [],
-      StudentData: [],
-      CollegeData: [],
+      StudentData: [
+        {studentid: '433', name: 'sudheer', email: 'sudheerjanga9999@gmail.com', query: 'some query', password: 'within2years'},
+        {studentid: '65', name: 'hemanth', email: 'hemanth@gmail.com', query: 'want to be cricketer', password: 'futuregoal'},
+        {studentid: '32', name: 'susmanth', email: 'susmanth@gmail.com', query: 'want to be gamer', password: 'chill'},
+        {studentid: '567', name: 'deekshi', email: 'deekshi@gmail.com', query: 'want to complete my phd', password: 'flyHigh'},
+        {studentid: '11', name: 'likky', email: 'likky@gmail.com', query: 'want to study mba', password: 'skydiver'},
+      ],
+      CollegeData: [{reference: '33', name: 'sudheer', email: 'sudheerjanga9999@gmail.com', studentid: '987'},
+      {reference: '32', name: 'lokesh', email: 'lokesh@gmail.com', studentid: '955'},
+      {reference: '432', name: 'yakshi', email: 'yakhi@gmail.com', studentid: '255'},
+      {reference: '232', name: 'gnani', email: 'gnani@gmail.com', studentid: '655'}
+    ],
     },
 
     initialize: () => {
       if (typeof localStorage !== 'undefined') {
         for (const key in userData.data) {
+          if(key !=='registeredUsers'){
+            localStorage.setItem(key, JSON.stringify(userData.data[key]));
+          }
           userData.data[key] = JSON.parse(localStorage.getItem(key)) || [];
         }
       }
@@ -47,7 +60,6 @@ export const AccessFormData = defineStore('accessFormData', () => {
         userData.data[formType].push(user);
 
         if (typeof localStorage !== 'undefined') {
-          console.log(userData.data[formType])
           localStorage.setItem(formType, JSON.stringify(userData.data[formType]));
         }
       } else {
@@ -69,8 +81,8 @@ export const AccessFormData = defineStore('accessFormData', () => {
 export const NavData = defineStore('navData', () => {
 
   const defaultNav = [
-    { id: 1, toAddress: '/userAuthentication/register', navName: "Register" },
-    { id: 2, toAddress: '/userAuthentication/login', navName: "Login" },
+    { id: 1, toAddress: '/register', navName: "Register" },
+    { id: 2, toAddress: '/', navName: "Login" },
 
   ]
 
@@ -81,7 +93,7 @@ export const NavData = defineStore('navData', () => {
     { id: 4, toAddress: '/crud-users', navName: "crud users" },
     { id: 3, toAddress: '/quote', navName: "Quote" },
     { id: 6, toAddress: '/pokemon-cards', navName: "Pokemon" },
-    { id: 5, toAddress: '/userAuthentication/login', navName: "LogOut" },
+    { id: 5, toAddress: '/', navName: "LogOut" },
   ]
   return { defaultNav, customNav }
 })

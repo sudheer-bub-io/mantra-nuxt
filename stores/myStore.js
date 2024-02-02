@@ -7,12 +7,18 @@ export const userDataStore = defineStore('mydata', () => {
 
 export const usersdata = defineStore('userdata', () => {
   const users = ref([]);
+  const userSearchInput = ref("");
+
   const fetchUsers = async () => {
     try {
       const response = await fetch('https://fakestoreapi.com/users');
       const data = await response.json();
       if (response.ok) {
-        users.value = data;
+        if (userSearchInput.value === "") {
+          users.value = data;
+        } else {
+          users.value= data.filter(user => user.username.includes(userSearchInput.value));
+        }
       } else {
         console.error("Error fetching users:", data);
       }
@@ -20,12 +26,15 @@ export const usersdata = defineStore('userdata', () => {
       console.error("Error fetching users:", error);
     }
   };
-  return {
-    fetchUsers,
-    users,
+  watch(userSearchInput, async (newValue, oldValue) => {
+    if (newValue !== oldValue) {
+      await fetchUsers();
+    }
+  });
 
-  }
-})
+  return { fetchUsers, users, userSearchInput,};
+});
+
 
 export const crudusers = defineStore('mydata2', () => {
   const submitUser = [[
@@ -84,10 +93,14 @@ export const enteredColor = defineStore('mydata', () => {
 });
 
 export const Pokemon = defineStore('pokemon', () => {
-  const searchedPokemon = ref("bulbasaur")
+  const searchedPokemon = ref("34")
   const playCards = ref([]);
   const fetchCards = async () => {
     try {
+      if(searchedPokemon.value>1000){
+        useToast().error(`Enter Values less than 1000`)
+        searchedPokemon.value="34"
+      }
       const response = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${searchedPokemon.value}/`);
       const data = await response.json();
       if (response.ok) {

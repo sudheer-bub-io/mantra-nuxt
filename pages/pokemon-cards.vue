@@ -25,27 +25,32 @@ async function handelSubmit() {
         </form>
     </div>
     <div class="">
-      <div v-if="pokemon.playCards" class="mx-auto my-4 max-w-sm rounded-md bg-gray-100">
-        <div style="background-image: url('{{ pokemon.playCards?.sprites?.front_default }}');" class="bg-cover bg-center bg-stone-300 rounded-lg overflow-hidden shadow-md">
-            <img :src="pokemon.playCards?.sprites?.front_default" class="w-full h-48 object-cover" alt="Pokemon Image">
-            <div class="bg-white ">
-                <h1 class="text-xl font-bold mb-2">{{ pokemon.playCards.name }}</h1>
-                <div class="flex justify-between mb-2">
-                    <p class="text-sm">Height: {{ pokemon.playCards.height }}</p>
-                    <p class="text-sm">Weight: {{ pokemon.playCards.weight }}</p>
-                    <p class="text-sm">Rank: {{ pokemon.playCards.order }}</p>
+      <div v-if="pokemon.playCards" class="mx-auto my-4 max-w-md rounded-lg border border-black-900 shadow-md bg-gradient-background bg-180% animate-gradient-animation">
+        <div style="background-image: url('{{ pokemon.playCards?.sprites?.front_default }}');" class="bg-cover bg-center  rounded-lg overflow-hidden shadow-md">
+            <img :src="pokemon.playCards?.sprites?.front_default" class="w-44 ml-32" alt="Pokemon Image">
+            <div class=" ">
+                <h1 class="text-3xl text-white font-black mb-2 text-center">{{ pokemon.playCards.name }}</h1>
+                <div class="flex justify-between mb-2 ">
+                    <p class="text-lg  text-white font-extrabold">Height: {{ pokemon.playCards.height }}</p>
+                    <p class="text-lg  text-white font-extrabold">Weight: {{ pokemon.playCards.weight }}</p>
+                    <p class="text-lg  text-white font-extrabold">Rank: {{ pokemon.playCards.order }}</p>
                 </div>
-                <h2 class="text-lg font-semibold ">Power:</h2>
-                <div class="flex flex-wrap">
-                    <div v-for="type in pokemon.playCards.types" :key="type.type.name" class="mr-2 mb-2">
-                        <p class="text-sm px-1 bg-blue-200 rounded-md">{{ type.type.name }}</p>
+                <div :style="{ 'background-image': `url(${pokemon.playCards?.sprites?.back_shiny})`, 'background-repeat': 'no-repeat', 'background-size': 'cover' }" >
+                  <h2 class="text-xl text-white ml-5 font-semibold ">Power:</h2>
+                  <div  class="flex flex-wrap">
+                    <div v-for="type in pokemon.playCards.types" :key="type.type.name" class="mr-2 mb-2 ml-6">
+                        <p class="text-lg w-20 h-8 text-white text-center bg-blue-400 rounded-md">{{ type.type.name }}</p>
                     </div>
                 </div>
-                <h2 class="text-lg font-semibold my-2">Base Stats:</h2>
-                <div v-for="stat in pokemon.playCards.stats" :key="stat.stat.name" class="flex justify-between">
-                    <p class="text-sm ml-5">{{ stat.stat.name }}</p>
-                    <p class="text-sm font-bold mr-10">{{ stat.base_stat }}</p>
+                <h2 class="text-xl text-white font-semibold my-2">Base Stats:</h2>
+                <div>
+                  <div v-for="stat in pokemon.playCards.stats" :key="stat.stat.name" class="flex justify-between">
+                    <p class="text-lg text-white font-medium ml-5">{{ stat.stat.name }}</p>
+                    <p class="text-lg text-white font-medium  mr-10">{{ stat.base_stat }}</p>
                 </div>
+                </div>
+                </div>
+               
             </div>
         </div>
     </div>

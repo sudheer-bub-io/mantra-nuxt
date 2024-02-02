@@ -8,7 +8,6 @@ definePageMeta({
 });
 const formsData = AccessFormData();
 const { $checkInputFeild } = useNuxtApp();
-const {$reloadFunction} = useNuxtApp();
 
 const studentDataForm = ref(formsData.studentData[0]);
 const collegeDataForm = ref(formsData.collegeData[0]);
@@ -30,7 +29,7 @@ function toggleState(target) {
 
 const handleFormChange = () => {
   selectedForm.value=='StudentData'?selectedHeader.value=formsData.studentData[2]:selectedHeader.value=formsData.collegeData[2]
-  const data = localStorage.getItem(selectedForm.value);
+  const data =localStorage.getItem(selectedForm.value);
   storedData.value = JSON.parse(data) || [];
   showSortButton.value=true
 };
@@ -62,7 +61,6 @@ const handleFormSubmit = (formD, message) => {
         password: formD.entersomething,
       }, "StudentData");
       useToast().success(`You're successfully registered`);
-      $reloadFunction(1500);
     } else if (message == 'collegeForm') {
       formsData.userData.storeUser({
         reference: formD.referenceid,
@@ -71,8 +69,9 @@ const handleFormSubmit = (formD, message) => {
         studentid: formD.studentid
       }, "CollegeData");
       useToast().success(`You're successfully registered`);
-      $reloadFunction(1500);
     }
+  }else{
+    useToast().error(`Enter all the input feilds`);
   }
 }
 </script>
