@@ -30,7 +30,7 @@ export const usersdata = defineStore('userdata', () => {
     if (newValue !== oldValue) {
       await fetchUsers();
     }
-  });
+  }); 
 
   return { fetchUsers, users, userSearchInput,};
 });
@@ -95,6 +95,7 @@ export const enteredColor = defineStore('mydata', () => {
 export const Pokemon = defineStore('pokemon', () => {
   const searchedPokemon = ref("34")
   const playCards = ref([]);
+  const userFavCards = ref([]);
   const fetchCards = async () => {
     try {
       if(searchedPokemon.value>1000){
@@ -115,7 +116,8 @@ export const Pokemon = defineStore('pokemon', () => {
   return {
     fetchCards,
     playCards,
-    searchedPokemon
+    searchedPokemon,
+    userFavCards
   };
 });
 export const currentUser = defineStore('currentUser', () => {

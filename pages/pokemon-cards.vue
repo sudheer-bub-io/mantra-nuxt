@@ -14,19 +14,28 @@ onMounted(async () => {
 async function handelSubmit() {
   await pokemon.fetchCards();
 }
+function handelFavcard(){
+  pokemon.userFavCards.push(pokemon.playCards)
+  console.log(pokemon.userFavCards)
+}
+function goToFavCards(){
+  navigateTo("/user-fav-cards")
+}
 
 </script>
 <template>  
   <div class="flex  flex-col h-screen">
-    <div class=" flex justify-end">
+    <div class=" flex justify-between ml-10 mt-3">
+      <button @click="goToFavCards" class="bg-green-500 text-white text-md w-24 h-8  rounded-md ">fav cards </button>
         <form @submit.prevent="handelSubmit">
           <input type="text" v-model="pokemon.searchedPokemon" class="bg-gray-200 rounded-md w-30 h-10 " />
           <button class="bg-green-600 h-10 w-20 rounded-md ml-2 border-none">Submit </button>
         </form>
     </div>
-    <div class="">
+    <div class="">  
       <div v-if="pokemon.playCards" class="mx-auto my-4 max-w-md rounded-lg border border-black-900 shadow-md bg-gradient-background bg-180% animate-gradient-animation">
         <div style="background-image: url('{{ pokemon.playCards?.sprites?.front_default }}');" class="bg-cover bg-center  rounded-lg overflow-hidden shadow-md">
+             <button @click="handelFavcard" class="bg-blue-400 text-white">Add to fav</button>
             <img :src="pokemon.playCards?.sprites?.front_default" class="w-44 ml-32" alt="Pokemon Image">
             <div class=" ">
                 <h1 class="text-3xl text-white font-black mb-2 text-center">{{ pokemon.playCards.name }}</h1>
@@ -42,7 +51,7 @@ async function handelSubmit() {
                         <p class="text-lg w-20 h-8 text-white text-center bg-blue-400 rounded-md">{{ type.type.name }}</p>
                     </div>
                 </div>
-                <h2 class="text-xl text-white font-semibold my-2">Base Stats:</h2>
+                <h2 class="text-xl text-white ml-5 font-semibold">Base Stats:</h2>
                 <div>
                   <div v-for="stat in pokemon.playCards.stats" :key="stat.stat.name" class="flex justify-between">
                     <p class="text-lg text-white font-medium ml-5">{{ stat.stat.name }}</p>
@@ -57,10 +66,6 @@ async function handelSubmit() {
     <div v-else>
         <h1>Loading......</h1>
     </div>
-    
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
  

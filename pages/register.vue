@@ -9,11 +9,9 @@ const { $checkInputFeild } = useNuxtApp();
 const registerdata = ref(store.registerData[0]);
 
 const updateFieldValue = (fieldName, value) => {
-  console.log(fieldName)
   const field = registerdata.value.find(f => f.name === fieldName);
   if (field) {
     field.value = value;
-    console.log(field.value)
   }
 }
 

@@ -1,6 +1,8 @@
 <script setup>
 import { defineProps } from 'vue';
 const userData = defineProps(['storedData', 'Header','showSortButton'])
+console.log(userData.storedData)
+console.log("Hello")
 function handelSortById() {
   userData.storedData.sort((a, b) => {
     const idA = parseInt(a.studentid);
@@ -25,6 +27,7 @@ function handelSortByName() {
 }
 </script>
 <template>
+  {{ storedData }}
   <button v-if="showSortButton" @click="handelSortById" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By stud Id</button>
   <button v-if="showSortButton" @click="handelSortByName" class="bg-slate-700 h-10 w-32 rounded-md ml-5 text-white">sort By Name</button>
   <table class="styled-table">

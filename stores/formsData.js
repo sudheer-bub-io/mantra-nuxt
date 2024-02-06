@@ -58,7 +58,6 @@ export const AccessFormData = defineStore('accessFormData', () => {
     storeUser: (user, formType) => {
       if (Object.keys(userData.data).includes(formType)) {
         userData.data[formType].push(user);
-
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem(formType, JSON.stringify(userData.data[formType]));
         }

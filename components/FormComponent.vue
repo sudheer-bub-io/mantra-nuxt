@@ -39,7 +39,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const props = defineProps(['fields', 'label', 'submitButtonText', 'formMessage','formsInfo']);
-const emits = defineEmits(['onSubmit']);
+const emits = defineEmits(['onSubmit','update']);
 const updateFieldValue = (fieldName, value) => {
   emits('updateFieldValue', fieldName, value);
 };
