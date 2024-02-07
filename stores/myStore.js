@@ -17,7 +17,7 @@ export const usersdata = defineStore('userdata', () => {
         if (userSearchInput.value === "") {
           users.value = data;
         } else {
-          users.value= data.filter(user => user.username.includes(userSearchInput.value));
+          users.value = data.filter(user => user.username.includes(userSearchInput.value));
         }
       } else {
         console.error("Error fetching users:", data);
@@ -30,57 +30,50 @@ export const usersdata = defineStore('userdata', () => {
     if (newValue !== oldValue) {
       await fetchUsers();
     }
-  }); 
+  });
 
-  return { fetchUsers, users, userSearchInput,};
+  return { fetchUsers, users, userSearchInput, };
 });
 
 
 export const crudusers = defineStore('mydata2', () => {
-  const submitUser = [[
+  const submitUser = [
     { id: 1, type: "text", name: "userName", placeholder: "userName", value: '' },
-    { id: 2, type: "text", name: "UserAge", placeholder: "UserAge", value: '' },
-  ], "Save User", "Add User"]
-  const uservalues = ref([
-    { id: generateRandomNumber(), name: 'sudheer', age: 22, },
-    { id: generateRandomNumber(), name: 'lokesh', age: 24, },
-  ]);
+    { id: 2, type: "text", name: "userAge", placeholder: "UserAge", value: '' },
+  ]
+
+
+  const updateUserClicked = ref(false)
+
+  const alldata = {
+    uservalues: ref([
+      { id: generateRandomNumber(), name: 'sudheer', age: 22, },
+      { id: generateRandomNumber(), name: 'lokesh', age: 24, },
+    ])
+  }
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100);
   }
-  const updateuserName = ref('');
-  const updateuserAge = ref('');
-  const updatedId = ref(0)
-  const updateButtonClicked = ref(false);
-  function onDeleteUser(id) {
-    uservalues.value = uservalues.value.filter((user) => user.id !== +id);
+  function addEmployee(addEmployee, crudType) {
+    alldata[crudType].value.push(addEmployee)
   }
-  function onUpdateUser(id, name, age) {
-    updateButtonClicked.value = !updateButtonClicked.value;
-    updateuserAge.value = age
-    updateuserName.value = name
-    updatedId.value = id
-  }
-  function onUpdateUserClicked() {
-    const updatedObject = {
-      id: updatedId.value,
-      name: updateuserName.value,
-      age: updateuserAge.value
-    };
-    const index = uservalues.value.findIndex(user => user.id === updatedObject.id);
+  function onUpdated(updatedObject, crudType) {
+    const index = alldata[crudType].value.findIndex(user => {
+      return user.id == updatedObject.id;
+    });
 
     if (index !== -1) {
-      uservalues.value.splice(index, 1, updatedObject);
-      useToast().success('User Updated Successfully');
+      alldata[crudType].value.splice(index, 1, updatedObject);
     } else {
-      useToast().error('User not found');
+      console.log("Error");
     }
-    updateButtonClicked.value = !updateButtonClicked.value;
-    updatedId.value = 0;
-    updateuserName.value = '';
-    updateuserAge.value = '';
+
+    updateUserClicked.value = !updateUserClicked.value;
   }
-  return { uservalues, submitUser, onDeleteUser, onUpdateUser, updateButtonClicked, updateuserName, updateuserAge, onUpdateUserClicked, generateRandomNumber };
+  function deleteEmployee(id, crudType) {
+    alldata[crudType].value = alldata[crudType].value.filter(x => x.id !== id);
+  }
+  return { submitUser, updateUserClicked, alldata, addEmployee, onUpdated, deleteEmployee, generateRandomNumber };
 });
 export const isSign = defineStore('mydata', () => {
   const userSigned = ref(false);
@@ -98,9 +91,9 @@ export const Pokemon = defineStore('pokemon', () => {
   const userFavCards = ref([]);
   const fetchCards = async () => {
     try {
-      if(searchedPokemon.value>1000){
+      if (searchedPokemon.value > 1000) {
         useToast().error(`Enter Values less than 1000`)
-        searchedPokemon.value="34"
+        searchedPokemon.value = "34"
       }
       const response = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${searchedPokemon.value}/`);
       const data = await response.json();

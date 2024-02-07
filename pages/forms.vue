@@ -86,13 +86,13 @@ const handleFormSubmit = (formD, message) => {
         <div v-if="state.coll"> 
           <form @submit.prevent="handleFormSubmit">
             <FormComponent :fields="formsData.collegeData[0]" @updateFieldValue="updateFieldValue2"
-              @onSubmit="handleFormSubmit" :submitButtonText="formsData.collegeData[3]" :formMessage="formsData.collegeData[1]" :errors="errors" />
+              @onSubmit="handleFormSubmit" :submitButtonText="formsData.collegeData[3]" :formMessage="formsData.collegeData[1]" />
           </form>
         </div>
         <div v-if="state.stud">
           <form @submit.prevent="handleFormSubmit">
             <FormComponent :fields="formsData.studentData[0]" @updateFieldValue="updateFieldValue" @onSubmit="handleFormSubmit"
-              :submitButtonText="formsData.studentData[3]" :formMessage="formsData.studentData[1]" :errors="errors" />
+              :submitButtonText="formsData.studentData[3]" :formMessage="formsData.studentData[1]"/>
           </form>
         </div>
       </div>

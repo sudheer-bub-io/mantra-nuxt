@@ -1,6 +1,7 @@
 <script setup>
 import { Pokemon } from '@/stores/myStore';
 import { onMounted } from 'vue';
+import UserFavCards from './user-fav-cards.vue';
 
 definePageMeta({
   layout: 'custom'
@@ -14,10 +15,11 @@ onMounted(async () => {
 async function handelSubmit() {
   await pokemon.fetchCards();
 }
-function handelFavcard(){
+function handelFavcard() {
   pokemon.userFavCards.push(pokemon.playCards)
-  console.log(pokemon.userFavCards)
+  isAddedTofav.value = !isAddedTofav.value;
 }
+
 function goToFavCards(){
   navigateTo("/user-fav-cards")
 }
@@ -35,7 +37,12 @@ function goToFavCards(){
     <div class="">  
       <div v-if="pokemon.playCards" class="mx-auto my-4 max-w-md rounded-lg border border-black-900 shadow-md bg-gradient-background bg-180% animate-gradient-animation">
         <div style="background-image: url('{{ pokemon.playCards?.sprites?.front_default }}');" class="bg-cover bg-center  rounded-lg overflow-hidden shadow-md">
-             <button @click="handelFavcard" class="bg-blue-400 text-white">Add to fav</button>
+             <button @click="handelFavcard" :class="`text-black-900`">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+                <path fillRule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clipRule="evenodd" />
+              </svg>
+              
+             </button>
             <img :src="pokemon.playCards?.sprites?.front_default" class="w-44 ml-32" alt="Pokemon Image">
             <div class=" ">
                 <h1 class="text-3xl text-white font-black mb-2 text-center">{{ pokemon.playCards.name }}</h1>

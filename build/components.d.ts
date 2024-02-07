@@ -2,7 +2,6 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'FormComponent': typeof import("../components/FormComponent.vue")['default']
-    'HandelCrudUsers': typeof import("../components/HandelCrudUsers.vue")['default']
     'LayoutComponentHeader': typeof import("../components/LayoutComponent/Header.vue")['default']
     'LayoutComponentNavBar': typeof import("../components/LayoutComponent/NavBar.vue")['default']
     'PokemonCard': typeof import("../components/PokemonCard.vue")['default']
@@ -29,7 +28,6 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyFormComponent': typeof import("../components/FormComponent.vue")['default']
-    'LazyHandelCrudUsers': typeof import("../components/HandelCrudUsers.vue")['default']
     'LazyLayoutComponentHeader': typeof import("../components/LayoutComponent/Header.vue")['default']
     'LazyLayoutComponentNavBar': typeof import("../components/LayoutComponent/NavBar.vue")['default']
     'LazyPokemonCard': typeof import("../components/PokemonCard.vue")['default']
@@ -59,7 +57,6 @@ declare module 'vue' {
 }
 
 export const FormComponent: typeof import("../components/FormComponent.vue")['default']
-export const HandelCrudUsers: typeof import("../components/HandelCrudUsers.vue")['default']
 export const LayoutComponentHeader: typeof import("../components/LayoutComponent/Header.vue")['default']
 export const LayoutComponentNavBar: typeof import("../components/LayoutComponent/NavBar.vue")['default']
 export const PokemonCard: typeof import("../components/PokemonCard.vue")['default']
@@ -86,7 +83,6 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyFormComponent: typeof import("../components/FormComponent.vue")['default']
-export const LazyHandelCrudUsers: typeof import("../components/HandelCrudUsers.vue")['default']
 export const LazyLayoutComponentHeader: typeof import("../components/LayoutComponent/Header.vue")['default']
 export const LazyLayoutComponentNavBar: typeof import("../components/LayoutComponent/NavBar.vue")['default']
 export const LazyPokemonCard: typeof import("../components/PokemonCard.vue")['default']

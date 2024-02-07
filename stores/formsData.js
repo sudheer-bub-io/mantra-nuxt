@@ -23,7 +23,7 @@ export const AccessFormData = defineStore('accessFormData', () => {
     { id: 1, type: "text", name: "studentid", placeholder: "Studentid", value: '' },
     { id: 2, type: "text", name: "name", placeholder: "userName", value: '' },
     { id: 3, type: "text", name: "email", placeholder: "EnterEmail", value: '' },
-    { id: 4, type: "textArea", name: "enterquery", placeholder: "Enter Query", value: '' },
+    { id: 4, type: "text", name: "enterquery", placeholder: "Enter Query", value: '' },
     { id: 5, type: "text", name: "entersomething", placeholder: "EnterSomething", value: '' },
   ], "studentForm", ['studentid', 'Name', 'Email', 'query', 'password'], "Submit"];
 
