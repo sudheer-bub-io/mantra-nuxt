@@ -89,6 +89,7 @@ export const Pokemon = defineStore('pokemon', () => {
   const searchedPokemon = ref("34")
   const playCards = ref([]);
   const userFavCards = ref([]);
+  const userCardStatus = ref(null)
   const fetchCards = async () => {
     try {
       if (searchedPokemon.value > 1000) {
@@ -99,6 +100,9 @@ export const Pokemon = defineStore('pokemon', () => {
       const data = await response.json();
       if (response.ok) {
         playCards.value = data;
+        console.log(data)
+        userCardStatus.value =userFavCards.value.some(card => card.id === data.id);
+        console.log(userCardStatus.value)
       } else {
         console.error("Error fetching users:", data);
       }
@@ -110,7 +114,8 @@ export const Pokemon = defineStore('pokemon', () => {
     fetchCards,
     playCards,
     searchedPokemon,
-    userFavCards
+    userFavCards,
+    userCardStatus
   };
 });
 export const currentUser = defineStore('currentUser', () => {
